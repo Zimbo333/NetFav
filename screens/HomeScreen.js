@@ -12,20 +12,20 @@ import {
 // import CategoryGridTile from "../components/CategoryGridTile";
 
 const HomeScreen = (props) => {
-  
+
   return (
     // <FlatList data={CATEGORIES} renderItem={renderGridItem} numColumns={2} />
 
     // ส่วนนี้ <View>...</View>ใช้เพื่อการทดลอง และให้คอมเมนต์เมื่อใช้ <FlatList>
     <View style={styles.screen}>
-      <View style={styles.container}>
+      {/* <View style={styles.container}> */}
         <View style={styles.box1}>
           <Text style={styles.headText}>Update your Progress</Text>
         </View>
         <View style={styles.box2}>
           <Text style={styles.headText}>Trending Now</Text>
         </View>
-      </View>
+      {/* </View> */}
 
     </View>
   );
@@ -42,7 +42,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: '#45524b',
     justifyContent: "center",
-    alignItems: "center",
+    alignItems: "stretch",
   },
   // container: {
   //   margin: 20,
@@ -52,21 +52,24 @@ const styles = StyleSheet.create({
 
   // },
   box1: {
-    margin: 20,
+    margin: 10,
     padding: 10,
     flex: 1,
     backgroundColor: 'black',
+    alignItems: "flex-start"
 
   },
   box2: {
-    margin: 20,
+    margin: 10,
     padding: 10,
     flex: 1,
     backgroundColor: 'black',
+    alignItems: "flex-start"
 
   },
   headText: {
     color: 'white',
+    fontSize: '100%'
 
   },
 });

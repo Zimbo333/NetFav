@@ -6,15 +6,16 @@ import HomeScreen from "../screens/HomeScreen";
 
 const NetFavNavigator = createStackNavigator(
   {
-    // กำหนด RouteConfigs (Slide 14)
     Home: HomeScreen,
 
   },
   {
-    // กำหนด defaultNavigationOptions (Slide 23-24)
     defaultNavigationOptions: {
       headerStyle: { backgroundColor: "#232926", },
       headerTintColor: "red",
+      headerTitleStyle: {
+        fontWeight: 'bold',
+      },
     },
   }
 );
