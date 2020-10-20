@@ -24,7 +24,7 @@ const LoginScreen = (props) => {
           onPress={() => Linking.openURL('http://google.com')}>
           Forgotten password?
           </Text>
-        <Button title="Login" color="red" style={styles.button} />
+        <Button title="Login" color="red" style={styles.button} onPress={() => { props.navigation.navigate("Home") }} />
       </View>
     </View>
   )
