@@ -18,7 +18,15 @@ const HomeScreen = (props) => {
 
     // ส่วนนี้ <View>...</View>ใช้เพื่อการทดลอง และให้คอมเมนต์เมื่อใช้ <FlatList>
     <View style={styles.screen}>
-      <Text>Home Screen</Text>
+      <View style={styles.container}>
+        <View style={styles.box1}>
+          <Text style={styles.headText}>Update your Progress</Text>
+        </View>
+        <View style={styles.box2}>
+          <Text style={styles.headText}>Trending Now</Text>
+        </View>
+      </View>
+
     </View>
   );
 };
@@ -35,6 +43,31 @@ const styles = StyleSheet.create({
     backgroundColor: '#45524b',
     justifyContent: "center",
     alignItems: "center",
+  },
+  // container: {
+  //   margin: 20,
+  //   padding: 10,
+  //   flex: 1,
+  //   backgroundColor: 'white',
+
+  // },
+  box1: {
+    margin: 20,
+    padding: 10,
+    flex: 1,
+    backgroundColor: 'black',
+
+  },
+  box2: {
+    margin: 20,
+    padding: 10,
+    flex: 1,
+    backgroundColor: 'black',
+
+  },
+  headText: {
+    color: 'white',
+
   },
 });
 
