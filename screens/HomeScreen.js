@@ -12,7 +12,7 @@ import {
 // import CategoryGridTile from "../components/CategoryGridTile";
 
 const HomeScreen = (props) => {
-
+  
   return (
     // <FlatList data={CATEGORIES} renderItem={renderGridItem} numColumns={2} />
 
