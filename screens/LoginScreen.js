@@ -49,27 +49,34 @@ const styles = StyleSheet.create({
     margin: 10,
   },
   textinput: {
-    margin: 10,
+    // margin: 10,
     padding: 10,
     height: 40,
     borderColor: 'gray',
     borderWidth: 1,
     backgroundColor: 'white',
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: 400,
+    marginBottom: 10
   },
   headerText: {
     color: 'white',
     fontSize: '250%',
     fontWeight: 'bold',
-    alignSelf: "center"
+    alignSelf: "center",
+    marginBottom: 10,
   },
   fgpassword: {
     marginBottom: 10,
     marginHorizontal: 10,
     color: 'white',
-    textDecorationLine: 'underline'
+    textDecorationLine: 'underline',
+    display: "block",
+    marginLeft: 750,
   },
   button: {
-
   }
 });
 
