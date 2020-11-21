@@ -20,7 +20,7 @@ const NetFavTabNavigator = createBottomTabNavigator(
       screen: HomeScreen,
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
-          return <Entypo name="home" size={24} color="black" />;
+          return <Entypo name="home" size={24} color={tabInfo.tintColor} />;
         },
       },
     },
@@ -28,7 +28,9 @@ const NetFavTabNavigator = createBottomTabNavigator(
       screen: SearchScreen,
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
-          return <FontAwesome name="search" size={24} color="black" />;
+          return (
+            <FontAwesome name="search" size={24} color={tabInfo.tintColor} />
+          );
         },
       },
     },
@@ -36,14 +38,36 @@ const NetFavTabNavigator = createBottomTabNavigator(
       screen: ProfileScreen,
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
-          return <Ionicons name="md-person" size={24} color="black" />;
+          return (
+            <Ionicons name="md-person" size={24} color={tabInfo.tintColor} />
+          );
         },
       },
     },
   },
   {
-    tabBarOptions: { activeTintColor: "red",
-  activeBackgroundColor: 'grey' },
+    tabBarOptions: {
+      activeTintColor: "white",
+      activeBackgroundColor: "#000000",
+      inactiveTintColor: "#5c5c5c",
+      inactiveBackgroundColor: "#111111",
+      style: {
+        // Remove border top on both android & ios
+        borderTopWidth: 0,
+        borderTopColor: "transparent",
+
+        elevation: 0,
+        shadowColor: "#5bc4ff",
+        shadowOpacity: 0,
+        shadowOffset: {
+          height: 0,
+        },
+        shadowRadius: 0,
+      },
+      tabStyle: {
+        padding: 5,
+      },
+    },
   }
 );
 
@@ -54,13 +78,13 @@ const NetFavNavigator = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      title: 'NetFav',
+      title: "NetFav",
       headerStyle: {
         backgroundColor: "black",
         elevation: 0,
         shadowOpacity: 0,
         borderBottomWidth: 0,
-        paddingBottom: 20
+        paddingBottom: 20,
       },
       headerTintColor: "red",
       headerTitleStyle: {

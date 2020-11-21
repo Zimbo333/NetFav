@@ -20,7 +20,14 @@ const ProfileScreen = (props) => {
       {/* <View style={styles.container}> */}
       <View style={styles.box0}>
         <Text style={styles.headText}>Display Name</Text>
-        <Button title="Logout" color="red" style={styles.button} onPress={() => { props.navigation.navigate("Login") }} />
+        <Button
+          title="Logout"
+          color="red"
+          style={styles.button}
+          onPress={() => {
+            props.navigation.navigate("Login");
+          }}
+        />
       </View>
       <View style={styles.box1}>
         <Text style={styles.headText}>Currenlty Watching</Text>
@@ -28,9 +35,6 @@ const ProfileScreen = (props) => {
       <View style={styles.box1}>
         <Text style={styles.headText}>Finished</Text>
       </View>
-      {/* <View style={styles.box2}>
-          <Text style={styles.headText}>Trending Now</Text>
-        </View> */}
       {/* </View> */}
     </View>
   );
@@ -39,7 +43,6 @@ const ProfileScreen = (props) => {
 // กำหนด navigationOptions เช่่น การปรับแต่งเฮดเดอร์ที่นี่ได้
 ProfileScreen.navigationOptions = {
   headerTitle: "NetFav",
-  
 };
 
 const styles = StyleSheet.create({
