@@ -42,7 +42,8 @@ const NetFavTabNavigator = createBottomTabNavigator(
     },
   },
   {
-    tabBarOptions: { activeTintColor: "orange" },
+    tabBarOptions: { activeTintColor: "red",
+  activeBackgroundColor: 'grey' },
   }
 );
 
@@ -55,10 +56,11 @@ const NetFavNavigator = createStackNavigator(
     defaultNavigationOptions: {
       title: 'NetFav',
       headerStyle: {
-        backgroundColor: "#232926",
+        backgroundColor: "black",
         elevation: 0,
         shadowOpacity: 0,
         borderBottomWidth: 0,
+        paddingBottom: 20
       },
       headerTintColor: "red",
       headerTitleStyle: {

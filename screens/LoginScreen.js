@@ -37,7 +37,7 @@ LoginScreen.navigationOptions = {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: '#45524b',
+    backgroundColor: '#111111',
     // justifyContent: "center",
     // alignItems: "stretch",
   },

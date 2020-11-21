@@ -19,11 +19,13 @@ const HomeScreen = (props) => {
     // ส่วนนี้ <View>...</View>ใช้เพื่อการทดลอง และให้คอมเมนต์เมื่อใช้ <FlatList>
     <View style={styles.screen}>
       {/* <View style={styles.container}> */}
+      <Text style={styles.result}>Update your Progress</Text>
         <View style={styles.box1}>
-          <Text style={styles.headText}>Update your Progress</Text>
+          <Text style={styles.headText}>Movie</Text>
         </View>
+        <Text style={styles.result}>Trending Now</Text>
         <View style={styles.box2}>
-          <Text style={styles.headText}>Trending Now</Text>
+          <Text style={styles.headText}>Movie</Text>
         </View>
       {/* </View> */}
 
@@ -40,7 +42,7 @@ HomeScreen.navigationOptions = {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: '#45524b',
+    backgroundColor: '#111111',
     justifyContent: "center",
     alignItems: "stretch",
   },
@@ -72,6 +74,13 @@ const styles = StyleSheet.create({
     fontSize: '100%'
 
   },
+  result:{
+    color: 'white',
+    margin: 12,
+    marginTop: 20,
+    fontSize: 28,
+    fontWeight: 'bold'
+  }
 });
 
 export default HomeScreen;

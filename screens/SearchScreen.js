@@ -28,9 +28,7 @@ const SearchScreen = (props) => {
         color="red"
       />
       </View>
-      <View>
-        <Text></Text>
-      </View>
+        <Text style={styles.result}>Result:</Text>
         <View style={styles.box1}>
           <Text style={styles.headText}>Currenlty Watching</Text>
         </View>
@@ -55,7 +53,7 @@ SearchScreen.navigationOptions = {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: '#45524b',
+    backgroundColor: '#111111',
     justifyContent: "center",
     alignItems: "stretch",
   },
@@ -97,9 +95,12 @@ const styles = StyleSheet.create({
     display: "block",
     marginLeft: "auto",
     marginRight: "auto",
-    width: 300,
+    width: 325,
     marginBottom: 10,
-    marginTop: 10
+    marginTop: 30,
+    backgroundColor: '#0F0F0F',
+    color: '#aaa',
+    border: "1px solid #fff1",
   },
   button:{
     width: 150,
@@ -107,6 +108,14 @@ const styles = StyleSheet.create({
     position: 'flex',
     marginLeft: 'auto',
     marginRight: 'auto',
+    width: 325
+  },
+  result:{
+    color: 'white',
+    margin: 10,
+    marginTop: 30,
+    fontSize: 28,
+    fontWeight: 'bold'
   }
 });
 
