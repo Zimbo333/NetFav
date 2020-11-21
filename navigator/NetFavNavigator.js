@@ -3,11 +3,16 @@ import React from "react";
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 import { createBottomTabNavigator } from "react-navigation-tabs";
+
 import { Ionicons } from "@expo/vector-icons";
+import { AntDesign } from '@expo/vector-icons';
+import { Entypo } from '@expo/vector-icons';
+import { FontAwesome } from '@expo/vector-icons';
 
 import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
 import ProfileScreen from "../screens/ProfileScreen";
+import SearchScreen from "../screens/SearchScreen";
 
 const NetFavTabNavigator = createBottomTabNavigator(
   {
@@ -16,25 +21,17 @@ const NetFavTabNavigator = createBottomTabNavigator(
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
           return (
-            <Ionicons
-              name="ios-home"
-              size={24}
-              color={tabInfo.tintColor}
-            />
+            <Entypo name="home" size={24} color="black" />
           );
         },
       },
     },
-    Firstpage: {
-      screen: HomeScreen,
+    Search: {
+      screen: SearchScreen,
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
           return (
-            <Ionicons
-              name="ios-note"
-              size={24}
-              color={tabInfo.tintColor}
-            />
+            <FontAwesome name="search" size={24} color="black" />
           );
         },
       },
@@ -43,9 +40,8 @@ const NetFavTabNavigator = createBottomTabNavigator(
       screen: ProfileScreen,
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
-          return (<Ionicons name="ios-star" size={24} color={tabInfo.tintColor} />);
+          return (<Ionicons name="md-person" size={24} color="black" />);
         },
-        tabBarLabel: "Profile",
       }
     }
   },

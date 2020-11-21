@@ -1,0 +1,113 @@
+import React from "react";
+import {
+  View,
+  Text,
+  Button,
+  FlatList,
+  StyleSheet,
+  TouchableOpacity,
+  Platform,
+} from "react-native";
+import { TextInput } from "react-native-gesture-handler";
+import { color } from "react-native-reanimated";
+// import { CATEGORIES } from "../data/dummy-data";
+// import CategoryGridTile from "../components/CategoryGridTile";
+
+const SearchScreen = (props) => {
+
+  return (
+    // <FlatList data={CATEGORIES} renderItem={renderGridItem} numColumns={2} />
+
+    // ส่วนนี้ <View>...</View>ใช้เพื่อการทดลอง และให้คอมเมนต์เมื่อใช้ <FlatList>
+    <View style={styles.screen}>
+      {/* <View style={styles.container}> */}
+      <TextInput style={styles.textinput} placeholder='Type movie name...'/>
+      <View style={styles.button}>
+      <Button
+        title="Search"
+        color="red"
+      />
+      </View>
+      <View>
+        <Text></Text>
+      </View>
+        <View style={styles.box1}>
+          <Text style={styles.headText}>Currenlty Watching</Text>
+        </View>
+        <View style={styles.box1}>
+          <Text style={styles.headText}>Finished</Text>
+        </View>
+        {/* <View style={styles.box2}>
+          <Text style={styles.headText}>Trending Now</Text>
+        </View> */}
+      {/* </View> */}
+
+    </View>
+  );
+};
+
+// กำหนด navigationOptions เช่่น การปรับแต่งเฮดเดอร์ที่นี่ได้
+SearchScreen.navigationOptions = {
+  headerTitle: "NetFav",
+};
+
+
+const styles = StyleSheet.create({
+  screen: {
+    flex: 1,
+    backgroundColor: '#45524b',
+    justifyContent: "center",
+    alignItems: "stretch",
+  },
+  // container: {
+  //   margin: 20,
+  //   padding: 10,
+  //   flex: 1,
+  //   backgroundColor: 'white',
+
+  // },
+  box1: {
+    margin: 10,
+    padding: 10,
+    flex: 1,
+    backgroundColor: 'black',
+    alignItems: "flex-start"
+
+  },
+  box2: {
+    margin: 10,
+    padding: 10,
+    flex: 1,
+    backgroundColor: 'black',
+    alignItems: "flex-start"
+
+  },
+  headText: {
+    color: 'white',
+    fontSize: '100%'
+
+  },
+  textinput: {
+    // margin: 10,
+    padding: 10,
+    height: 40,
+    borderColor: 'gray',
+    borderWidth: 1,
+    backgroundColor: 'white',
+    display: "block",
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: 300,
+    marginBottom: 10,
+    marginTop: 10
+  },
+  button:{
+    width: 150,
+    justifyContent: 'center',
+    position: 'flex',
+    marginLeft: 'auto',
+    marginRight: 'auto',
+  }
+});
+
+export default SearchScreen;

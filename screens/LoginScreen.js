@@ -5,7 +5,7 @@ import {
   Button,
   FlatList,
   StyleSheet,
-  TouchableOpacity,
+  TouchableOpacity,   
   Platform,
   TextInput,
   Linking,
@@ -55,7 +55,7 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     backgroundColor: 'white',
-    display: "flex",
+    display: "block",
     marginLeft: "auto",
     marginRight: "auto",
     width: 300,
@@ -74,9 +74,10 @@ const styles = StyleSheet.create({
     color: 'white',
     textDecorationLine: 'underline',
     display: "block",
-    marginLeft: 750,
+    marginRight: 'auto',
   },
   button: {
+    
   }
 });
 
