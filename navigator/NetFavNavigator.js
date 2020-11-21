@@ -7,6 +7,7 @@ import { Ionicons } from "@expo/vector-icons";
 
 import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
+import ProfileScreen from "../screens/ProfileScreen";
 
 const NetFavTabNavigator = createBottomTabNavigator(
   {
@@ -39,7 +40,7 @@ const NetFavTabNavigator = createBottomTabNavigator(
       },
     },
     Profile: {
-      screen: HomeScreen,
+      screen: ProfileScreen,
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
           return (<Ionicons name="ios-star" size={24} color={tabInfo.tintColor} />);
