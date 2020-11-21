@@ -16,7 +16,7 @@ const NetFavTabNavigator = createBottomTabNavigator(
         tabBarIcon: (tabInfo) => {
           return (
             <Ionicons
-              name="ios-restaurant"
+              name="ios-home"
               size={24}
               color={tabInfo.tintColor}
             />
@@ -30,7 +30,7 @@ const NetFavTabNavigator = createBottomTabNavigator(
         tabBarIcon: (tabInfo) => {
           return (
             <Ionicons
-              name="ios-restaurant"
+              name="ios-note"
               size={24}
               color={tabInfo.tintColor}
             />
@@ -38,15 +38,15 @@ const NetFavTabNavigator = createBottomTabNavigator(
         },
       },
     },
-    // Favorites: {
-    //   screen: FavNavigator,
-    //   navigationOptions: {
-    //     tabBarIcon: (tabInfo) => {
-    //       return (<Ionicons name="ios-star" size={24} color={tabInfo.tintColor} />);
-    //     },
-    //     tabBarLabel: "My Favorites",
-    //   }
-    // }
+    Profile: {
+      screen: HomeScreen,
+      navigationOptions: {
+        tabBarIcon: (tabInfo) => {
+          return (<Ionicons name="ios-star" size={24} color={tabInfo.tintColor} />);
+        },
+        tabBarLabel: "Profile",
+      }
+    }
   },
   {
     tabBarOptions: { activeTintColor: "orange" },

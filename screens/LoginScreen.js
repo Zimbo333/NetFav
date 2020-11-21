@@ -55,10 +55,10 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     backgroundColor: 'white',
-    display: "block",
+    display: "flex",
     marginLeft: "auto",
     marginRight: "auto",
-    width: 400,
+    width: 300,
     marginBottom: 10
   },
   headerText: {
