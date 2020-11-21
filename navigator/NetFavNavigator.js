@@ -5,9 +5,9 @@ import { createAppContainer } from "react-navigation";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 
 import { Ionicons } from "@expo/vector-icons";
-import { AntDesign } from '@expo/vector-icons';
-import { Entypo } from '@expo/vector-icons';
-import { FontAwesome } from '@expo/vector-icons';
+import { AntDesign } from "@expo/vector-icons";
+import { Entypo } from "@expo/vector-icons";
+import { FontAwesome } from "@expo/vector-icons";
 
 import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
@@ -20,9 +20,7 @@ const NetFavTabNavigator = createBottomTabNavigator(
       screen: HomeScreen,
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
-          return (
-            <Entypo name="home" size={24} color="black" />
-          );
+          return <Entypo name="home" size={24} color="black" />;
         },
       },
     },
@@ -30,9 +28,7 @@ const NetFavTabNavigator = createBottomTabNavigator(
       screen: SearchScreen,
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
-          return (
-            <FontAwesome name="search" size={24} color="black" />
-          );
+          return <FontAwesome name="search" size={24} color="black" />;
         },
       },
     },
@@ -40,10 +36,10 @@ const NetFavTabNavigator = createBottomTabNavigator(
       screen: ProfileScreen,
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
-          return (<Ionicons name="md-person" size={24} color="black" />);
+          return <Ionicons name="md-person" size={24} color="black" />;
         },
-      }
-    }
+      },
+    },
   },
   {
     tabBarOptions: { activeTintColor: "orange" },
@@ -57,11 +53,18 @@ const NetFavNavigator = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      headerStyle: { backgroundColor: "#232926" },
+      title: 'NetFav',
+      headerStyle: {
+        backgroundColor: "#232926",
+        elevation: 0,
+        shadowOpacity: 0,
+        borderBottomWidth: 0,
+      },
       headerTintColor: "red",
       headerTitleStyle: {
         fontWeight: "bold",
       },
+      headerLeft: null,
     },
   }
 );
