@@ -21,6 +21,7 @@ const MovieNavigator = createStackNavigator(
   {
     Home: HomeScreen,
     MovieDetail: MovieDetailScreen,
+    Add: AddMovieScreen,
   },
   {
     defaultNavigationOptions: {

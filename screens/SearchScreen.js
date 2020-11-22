@@ -31,7 +31,7 @@ const SearchScreen = (props) => {
         <View style={styles.box1}>
           <Text style={styles.headText}>Finished</Text> */}
           <Text style={styles.headText}>Not Found? <Text style={{color:'red'}} onPress={() => {
-            props.navigation.navigate("Home");
+            props.navigation.navigate("Add");
           }}>Request One.</Text></Text>
           
         </View>
