@@ -89,8 +89,6 @@ const styles = StyleSheet.create({
     // margin: 10,
     padding: 10,
     height: 40,
-    borderColor: 'gray',
-    borderWidth: 1,
     backgroundColor: 'white',
     marginLeft: "auto",
     marginRight: "auto",
@@ -99,12 +97,13 @@ const styles = StyleSheet.create({
     marginTop: 30,
     backgroundColor: '#0F0F0F',
     color: '#aaa',
-    border: "1px solid #fff1",
+    // borderColor: "#fff1",
+    borderStyle: 'solid',
+    borderWidth: 1
   },
   button:{
     width: 150,
     justifyContent: 'center',
-    position: 'flex',
     marginLeft: 'auto',
     marginRight: 'auto',
     width: 325
