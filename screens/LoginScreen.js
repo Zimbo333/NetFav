@@ -5,29 +5,47 @@ import {
   Button,
   FlatList,
   StyleSheet,
-  TouchableOpacity,   
+  TouchableOpacity,
   Platform,
   TextInput,
   Linking,
 } from "react-native";
-import Component from "react"
+import Component from "react";
 
 const LoginScreen = (props) => {
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
-        <Text style={styles.headerText}>Login</Text>
-        <TextInput style={styles.textinput} placeholder="username" />
-        <TextInput style={styles.textinput} placeholder="password" />
+        <Text style={styles.headerText}>Sign in</Text>
+        <Text style={styles.headerText2}>Username</Text>
+        <TextInput
+          style={styles.textinput}
+          placeholder="Enter Username"
+          placeholderTextColor="#ffffff"
+        />
+        <Text style={styles.headerText2}>Password</Text>
+        <TextInput
+          style={styles.textinput}
+          placeholder="Enter Password"
+          placeholderTextColor="#ffffff"
+        />
         <Text
           style={styles.fgpassword}
-          onPress={() => Linking.openURL('http://google.com')}>
+          onPress={() => Linking.openURL("http://google.com")}
+        >
           Forgotten password?
-          </Text>
-        <Button title="Login" color="red" style={styles.button} onPress={() => { props.navigation.navigate("Home") }} />
+        </Text>
+        <Button
+          title="Login"
+          color="#c1071e"
+          style={styles.button}
+          onPress={() => {
+            props.navigation.navigate("Home");
+          }}
+        />
       </View>
     </View>
-  )
+  );
 };
 
 LoginScreen.navigationOptions = {
@@ -37,7 +55,7 @@ LoginScreen.navigationOptions = {
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: '#111111',
+    backgroundColor: "#111111",
     // justifyContent: "center",
     // alignItems: "stretch",
   },
@@ -47,38 +65,42 @@ const styles = StyleSheet.create({
     flex: 1,
     // backgroundColor: 'blue',
     margin: 10,
+    justifyContent: "flex-start",
   },
   textinput: {
     // margin: 10,
     padding: 10,
     height: 40,
-    borderColor: 'gray',
+    borderColor: "#fff1",
     borderWidth: 1,
-    backgroundColor: 'white',
+    backgroundColor: "#232323",
+    color: "white",
     display: "block",
-    marginLeft: "auto",
-    marginRight: "auto",
-    width: 300,
-    marginBottom: 10
+    // marginLeft: "auto",
+    // marginRight: "auto",
+    width: "100%",
+    marginBottom: 10,
   },
   headerText: {
-    color: 'white',
-    fontSize: '250%',
-    fontWeight: 'bold',
-    alignSelf: "center",
+    color: "white",
+    fontSize: "200%",
+    // fontWeight: "bold",
+    marginBottom: 10,
+  },
+  headerText2: {
+    color: "#ffffff",
+    fontSize: "100%",
     marginBottom: 10,
   },
   fgpassword: {
     marginBottom: 10,
-    marginHorizontal: 10,
-    color: 'white',
-    textDecorationLine: 'underline',
+    // marginHorizontal: 10,
+    color: "white",
+    textDecorationLine: "underline",
     display: "block",
-    marginRight: 'auto',
+    marginRight: "auto",
   },
-  button: {
-    
-  }
+  button: {},
 });
 
 export default LoginScreen;

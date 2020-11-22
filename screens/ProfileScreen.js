@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   Platform,
 } from "react-native";
+import { ScrollView } from "react-native-gesture-handler";
 // import { CATEGORIES } from "../data/dummy-data";
 // import CategoryGridTile from "../components/CategoryGridTile";
 
@@ -18,8 +19,9 @@ const ProfileScreen = (props) => {
     // ส่วนนี้ <View>...</View>ใช้เพื่อการทดลอง และให้คอมเมนต์เมื่อใช้ <FlatList>
     <View style={styles.screen}>
       {/* <View style={styles.container}> */}
+      {/* <ScrollView style={styles.scrollContainer}> */}
       <View style={styles.box0}>
-        <Text style={styles.headText}>Display Name</Text>
+        <Text style={styles.innerBoxText}>Display Name</Text>
         <Button
           title="Logout"
           color="red"
@@ -29,13 +31,16 @@ const ProfileScreen = (props) => {
           }}
         />
       </View>
+      <Text style={styles.headText}>Currenlty Watching</Text>
       <View style={styles.box1}>
-        <Text style={styles.headText}>Currenlty Watching</Text>
+        <View style={styles.movieBox}></View>
       </View>
+      <Text style={styles.headText}>Finished</Text>
       <View style={styles.box1}>
-        <Text style={styles.headText}>Finished</Text>
+        <View style={styles.movieBox}></View>
       </View>
       {/* </View> */}
+      {/* </ScrollView> */}
     </View>
   );
 };
@@ -46,6 +51,11 @@ ProfileScreen.navigationOptions = {
 };
 
 const styles = StyleSheet.create({
+  scrollContainer: {
+    alignSelf: "stretch",
+    flex: 1,
+    // backgroundColor: "yellow",
+  },
   screen: {
     flex: 1,
     backgroundColor: "black",
@@ -74,17 +84,24 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#111111",
     alignItems: "flex-start",
-  },
-  box2: {
-    margin: 10,
-    padding: 10,
-    flex: 1,
-    backgroundColor: "black",
-    alignItems: "flex-start",
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
   },
   headText: {
+    marginLeft: 10,
     color: "white",
-    fontSize: "100%",
+    fontSize: 20,
+    fontWeight: "bold",
+  },
+  innerBoxText: {
+    color: "white",
+  },
+  movieBox: {
+    backgroundColor: "green",
+    width: "100%",
+    height: "100%",
+    marginBottom: 10,
   },
 });
 

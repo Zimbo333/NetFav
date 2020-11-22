@@ -86,7 +86,7 @@ const NetFavNavigator = createStackNavigator(
         borderBottomWidth: 0,
         paddingBottom: 20,
       },
-      headerTintColor: "red",
+      headerTintColor: "#c1071e",
       headerTitleStyle: {
         fontWeight: "bold",
       },
