@@ -21,25 +21,31 @@ const AddMovieScreen = (props) => {
         <TextInput
           style={styles.textinput}
           placeholder="Enter movie name"
-          placeholderTextColor="#dedede"
+          placeholderTextColor="#aaa"
         />
         <Text style={styles.headerText2}>Description</Text>
         <TextInput
           style={styles.textinput}
           placeholder="Enter movie description"
-          placeholderTextColor="#dedede"
+          placeholderTextColor="#aaa"
         />
         <Text style={styles.headerText2}>Season</Text>
         <TextInput
           style={styles.textinput2}
           placeholder="1"
-          placeholderTextColor="#dedede"
+          placeholderTextColor="#aaa"
         />
         <Text style={styles.headerText2}>Episode</Text>
         <TextInput
           style={styles.textinput2}
           placeholder="1"
-          placeholderTextColor="#dedede"
+          placeholderTextColor="#aaa"
+        />
+        <Text style={styles.headerText2}>Cover url</Text>
+        <TextInput
+          style={styles.textinput}
+          placeholder="Movie cover url"
+          placeholderTextColor="#aaa"
         />
         <Button
           title="Add"
