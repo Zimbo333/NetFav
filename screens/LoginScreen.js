@@ -60,6 +60,7 @@ const LoginScreen = (props) => {
 
 LoginScreen.navigationOptions = {
   headerTitle: "NetFav",
+  headerShown: true
 };
 
 const styles = StyleSheet.create({

@@ -41,6 +41,12 @@ const ProfileScreen = (props) => {
       </View>
       {/* </View> */}
       {/* </ScrollView> */}
+      <Button
+        title="Check"
+        onPress={() => {
+          props.navigation.navigate("MovieDetail");
+        }}
+      ></Button>
     </View>
   );
 };
@@ -48,6 +54,7 @@ const ProfileScreen = (props) => {
 // กำหนด navigationOptions เช่่น การปรับแต่งเฮดเดอร์ที่นี่ได้
 ProfileScreen.navigationOptions = {
   headerTitle: "NetFav",
+  headerLeft: null,
 };
 
 const styles = StyleSheet.create({

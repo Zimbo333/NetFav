@@ -40,6 +40,7 @@ const HomeScreen = (props) => {
 // กำหนด navigationOptions เช่่น การปรับแต่งเฮดเดอร์ที่นี่ได้
 HomeScreen.navigationOptions = {
   headerTitle: "NetFav",
+  headerLeft: null,
 };
 
 const styles = StyleSheet.create({

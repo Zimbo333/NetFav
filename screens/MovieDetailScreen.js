@@ -30,6 +30,7 @@ const MovieDetailScreen = (props) => {
 // กำหนด navigationOptions เช่่น การปรับแต่งเฮดเดอร์ที่นี่ได้
 MovieDetailScreen.navigationOptions = {
   headerTintColor: "white",
+  
 };
 
 const styles = StyleSheet.create({

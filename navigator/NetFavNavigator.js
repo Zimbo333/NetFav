@@ -17,11 +17,55 @@ import RegisterScreen from "../screens/RegisterScreen";
 import MovieDetailScreen from "../screens/MovieDetailScreen";
 import AddMovieScreen from "../screens/AddMovieScreen";
 
+const ProfileNavigator = createStackNavigator(
+  {
+    Profile: ProfileScreen,
+    MovieDetail: MovieDetailScreen,
+  },
+  {
+    defaultNavigationOptions: {
+      // title: "NetFav",
+      headerStyle: {
+        backgroundColor: "black",
+        elevation: 0,
+        shadowOpacity: 0,
+        borderBottomWidth: 0,
+      },
+      headerTintColor: "#c1071e",
+      headerTitleStyle: {
+        fontWeight: "bold",
+      },
+    },
+  }
+);
+
+const SearchNavigator = createStackNavigator(
+  {
+    Search: SearchScreen,
+    MovieDetail: MovieDetailScreen,
+    Add: AddMovieScreen,
+  },
+  {
+    defaultNavigationOptions: {
+      // title: "NetFav",
+      headerStyle: {
+        backgroundColor: "black",
+        elevation: 0,
+        shadowOpacity: 0,
+        borderBottomWidth: 0,
+      },
+      headerTintColor: "#c1071e",
+      headerTitleStyle: {
+        fontWeight: "bold",
+      },
+    },
+  }
+);
+
 const MovieNavigator = createStackNavigator(
   {
     Home: HomeScreen,
     MovieDetail: MovieDetailScreen,
-    Add: AddMovieScreen,
   },
   {
     defaultNavigationOptions: {
@@ -51,7 +95,7 @@ const NetFavTabNavigator = createBottomTabNavigator(
       },
     },
     Search: {
-      screen: SearchScreen,
+      screen: SearchNavigator,
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
           return (
@@ -61,7 +105,7 @@ const NetFavTabNavigator = createBottomTabNavigator(
       },
     },
     Profile: {
-      screen: ProfileScreen,
+      screen: ProfileNavigator,
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
           return (
@@ -117,6 +161,7 @@ const NetFavNavigator = createStackNavigator(
         fontWeight: "bold",
       },
       headerLeft: null,
+      headerShown: false
     },
   }
 );
