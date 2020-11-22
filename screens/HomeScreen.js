@@ -21,6 +21,11 @@ const HomeScreen = (props) => {
       <Text style={styles.result}>Update your Progress</Text>
       <View style={styles.box1}>
         <Text style={styles.headText}>Movie</Text>
+        <Button
+          onPress={() => {
+            props.navigation.navigate("MovieDetail");
+          }}
+        ></Button>
       </View>
       <Text style={styles.result}>Trending Now</Text>
       <View style={styles.box2}>

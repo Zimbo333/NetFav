@@ -14,11 +14,35 @@ import LoginScreen from "../screens/LoginScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import SearchScreen from "../screens/SearchScreen";
 import RegisterScreen from "../screens/RegisterScreen";
+import MovieDetailScreen from "../screens/MovieDetailScreen";
+
+const MovieNavigator = createStackNavigator(
+  {
+    Home: HomeScreen,
+    MovieDetail: MovieDetailScreen,
+  },
+  {
+    defaultNavigationOptions: {
+      // title: "NetFav",
+      headerStyle: {
+        backgroundColor: "black",
+        elevation: 0,
+        shadowOpacity: 0,
+        borderBottomWidth: 0,
+        paddingBottom: 20,
+      },
+      headerTintColor: "#c1071e",
+      headerTitleStyle: {
+        fontWeight: "bold",
+      },
+    },
+  }
+);
 
 const NetFavTabNavigator = createBottomTabNavigator(
   {
     Home: {
-      screen: HomeScreen,
+      screen: MovieNavigator,
       navigationOptions: {
         tabBarIcon: (tabInfo) => {
           return <Entypo name="home" size={24} color={tabInfo.tintColor} />;
