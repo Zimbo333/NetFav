@@ -83,7 +83,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     backgroundColor: "#232323",
     color: "#dedede",
-    display: "block",
     // marginLeft: "auto",
     // marginRight: "auto",
     width: "100%",
@@ -105,7 +104,6 @@ const styles = StyleSheet.create({
     // marginHorizontal: 10,
     color: "#dedede",
     textDecorationLine: "underline",
-    display: "block",
     marginRight: "auto",
   },
   button: {

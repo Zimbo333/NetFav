@@ -92,7 +92,6 @@ const styles = StyleSheet.create({
     borderColor: 'gray',
     borderWidth: 1,
     backgroundColor: 'white',
-    display: "block",
     marginLeft: "auto",
     marginRight: "auto",
     width: 325,
