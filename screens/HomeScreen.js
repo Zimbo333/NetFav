@@ -12,7 +12,6 @@ import {
 // import CategoryGridTile from "../components/CategoryGridTile";
 
 const HomeScreen = (props) => {
-
   return (
     // <FlatList data={CATEGORIES} renderItem={renderGridItem} numColumns={2} />
 
@@ -20,15 +19,14 @@ const HomeScreen = (props) => {
     <View style={styles.screen}>
       {/* <View style={styles.container}> */}
       <Text style={styles.result}>Update your Progress</Text>
-        <View style={styles.box1}>
-          <Text style={styles.headText}>Movie</Text>
-        </View>
-        <Text style={styles.result}>Trending Now</Text>
-        <View style={styles.box2}>
-          <Text style={styles.headText}>Movie</Text>
-        </View>
+      <View style={styles.box1}>
+        <Text style={styles.headText}>Movie</Text>
+      </View>
+      <Text style={styles.result}>Trending Now</Text>
+      <View style={styles.box2}>
+        <Text style={styles.headText}>Movie</Text>
+      </View>
       {/* </View> */}
-
     </View>
   );
 };
@@ -38,11 +36,10 @@ HomeScreen.navigationOptions = {
   headerTitle: "NetFav",
 };
 
-
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
-    backgroundColor: '#111111',
+    backgroundColor: "#111111",
     justifyContent: "center",
     alignItems: "stretch",
   },
@@ -57,30 +54,27 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     flex: 1,
-    backgroundColor: 'black',
-    alignItems: "flex-start"
-
+    backgroundColor: "black",
+    alignItems: "flex-start",
   },
   box2: {
     margin: 10,
     padding: 10,
     flex: 1,
-    backgroundColor: 'black',
-    alignItems: "flex-start"
-
+    backgroundColor: "black",
+    alignItems: "flex-start",
   },
   headText: {
-    color: 'white',
-    fontSize: '100%'
-
+    color: "white",
+    fontSize: 18,
   },
-  result:{
-    color: 'white',
+  result: {
+    color: "white",
     margin: 12,
     marginTop: 20,
-    fontSize: 28,
-    fontWeight: 'bold'
-  }
+    fontSize: 18,
+    fontWeight: "bold",
+  },
 });
 
 export default HomeScreen;

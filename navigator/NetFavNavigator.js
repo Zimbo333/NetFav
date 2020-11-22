@@ -13,6 +13,7 @@ import HomeScreen from "../screens/HomeScreen";
 import LoginScreen from "../screens/LoginScreen";
 import ProfileScreen from "../screens/ProfileScreen";
 import SearchScreen from "../screens/SearchScreen";
+import RegisterScreen from "../screens/RegisterScreen";
 
 const NetFavTabNavigator = createBottomTabNavigator(
   {
@@ -74,6 +75,7 @@ const NetFavTabNavigator = createBottomTabNavigator(
 const NetFavNavigator = createStackNavigator(
   {
     Login: LoginScreen,
+    Register: RegisterScreen,
     Home: NetFavTabNavigator,
   },
   {

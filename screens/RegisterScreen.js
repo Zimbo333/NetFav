@@ -12,11 +12,11 @@ import {
 } from "react-native";
 import Component from "react";
 
-const LoginScreen = (props) => {
+const RegisterScreen = (props) => {
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
-        <Text style={styles.headerText}>Sign in</Text>
+        <Text style={styles.headerText}>Sign up</Text>
         <Text style={styles.headerText2}>Username</Text>
         <TextInput
           style={styles.textinput}
@@ -29,26 +29,25 @@ const LoginScreen = (props) => {
           placeholder="Enter Password"
           placeholderTextColor="#dedede"
         />
-        <Text
-          style={styles.fgpassword}
-          onPress={() => Linking.openURL("http://google.com")}
-        >
-          Forgotten password?
-        </Text>
+        <Text style={styles.headerText2}>E-mail</Text>
+        <TextInput
+          style={styles.textinput}
+          placeholder="Enter Password"
+          placeholderTextColor="#dedede"
+        />
+        <Text style={styles.headerText2}>Display Name</Text>
+        <TextInput
+          style={styles.textinput}
+          placeholder="Enter Password"
+          placeholderTextColor="#dedede"
+        />
+
         <Button
-          title="Login"
+          title="Create Account"
           color="#c1071e"
           style={styles.button}
           onPress={() => {
             props.navigation.navigate("Home");
-          }}
-        />
-        <Button
-          title="Register Test"
-          color="#c1071e"
-          style={styles.button}
-          onPress={() => {
-            props.navigation.navigate("Register");
           }}
         />
       </View>
@@ -56,7 +55,7 @@ const LoginScreen = (props) => {
   );
 };
 
-LoginScreen.navigationOptions = {
+RegisterScreen.navigationOptions = {
   headerTitle: "NetFav",
 };
 
@@ -91,13 +90,13 @@ const styles = StyleSheet.create({
   },
   headerText: {
     color: "#dedede",
-    fontSize: 38,
+    fontSize: "200%",
     // fontWeight: "bold",
     marginBottom: 10,
   },
   headerText2: {
     color: "#dedede",
-    fontSize: 18,
+    fontSize: "100%",
     marginBottom: 10,
   },
   fgpassword: {
@@ -108,9 +107,7 @@ const styles = StyleSheet.create({
     display: "block",
     marginRight: "auto",
   },
-  button: {
-    marginBottom: 10,
-  },
+  button: {},
 });
 
-export default LoginScreen;
+export default RegisterScreen;
