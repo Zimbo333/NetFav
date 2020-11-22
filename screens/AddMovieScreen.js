@@ -17,13 +17,13 @@ const AddMovieScreen = (props) => {
     <View style={styles.screen}>
       <View style={styles.container}>
         <Text style={styles.headerText}>Add Movie</Text>
-        <Text style={styles.headerText2}>Username</Text>
+        <Text style={styles.headerText2}>Movie name</Text>
         <TextInput
           style={styles.textinput}
-          placeholder="Enter Username"
+          placeholder="Enter movie name"
           placeholderTextColor="#dedede"
         />
-        <Text style={styles.headerText2}>Password</Text>
+        <Text style={styles.headerText2}>Description</Text>
         <TextInput
           style={styles.textinput}
           placeholder="Enter Password"

@@ -26,6 +26,7 @@ const LoginScreen = (props) => {
         <Text style={styles.headerText2}>Password</Text>
         <TextInput
           style={styles.textinput}
+          secureTextEntry={true}
           placeholder="Enter Password"
           placeholderTextColor="#dedede"
         />
