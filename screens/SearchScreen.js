@@ -82,7 +82,7 @@ const styles = StyleSheet.create({
   },
   headText: {
     color: 'white',
-    fontSize: '100%'
+    fontSize: 18
 
   },
   textinput: {

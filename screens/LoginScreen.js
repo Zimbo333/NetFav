@@ -83,13 +83,13 @@ const styles = StyleSheet.create({
   },
   headerText: {
     color: "#dedede",
-    fontSize: "200%",
+    fontSize: 36,
     // fontWeight: "bold",
     marginBottom: 10,
   },
   headerText2: {
     color: "#dedede",
-    fontSize: "100%",
+    fontSize: 18,
     marginBottom: 10,
   },
   fgpassword: {
