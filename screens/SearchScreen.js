@@ -10,15 +10,11 @@ import {
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { color } from "react-native-reanimated";
-// import { CATEGORIES } from "../data/dummy-data";
-// import CategoryGridTile from "../components/CategoryGridTile";
+
 
 const SearchScreen = (props) => {
 
   return (
-    // <FlatList data={CATEGORIES} renderItem={renderGridItem} numColumns={2} />
-
-    // ส่วนนี้ <View>...</View>ใช้เพื่อการทดลอง และให้คอมเมนต์เมื่อใช้ <FlatList>
     <View style={styles.screen}>
       {/* <View style={styles.container}> */}
       <TextInput style={styles.textinput} placeholder='Type movie name...' placeholderTextColor='#aaa'/>
@@ -30,10 +26,14 @@ const SearchScreen = (props) => {
       </View>
         <Text style={styles.result}>Result:</Text>
         <View style={styles.box1}>
-          <Text style={styles.headText}>Currenlty Watching</Text>
+          {/* <Text style={styles.headText}>Currenlty Watching</Text>
         </View>
         <View style={styles.box1}>
-          <Text style={styles.headText}>Finished</Text>
+          <Text style={styles.headText}>Finished</Text> */}
+          <Text style={styles.headText}>Not Found? <Text style={{color:'red'}} onPress={() => {
+            props.navigation.navigate("Home");
+          }}>Request One.</Text></Text>
+          
         </View>
         {/* <View style={styles.box2}>
           <Text style={styles.headText}>Trending Now</Text>

@@ -15,6 +15,7 @@ import ProfileScreen from "../screens/ProfileScreen";
 import SearchScreen from "../screens/SearchScreen";
 import RegisterScreen from "../screens/RegisterScreen";
 import MovieDetailScreen from "../screens/MovieDetailScreen";
+import AddMovieScreen from "../screens/AddMovieScreen";
 
 const MovieNavigator = createStackNavigator(
   {
