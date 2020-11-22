@@ -29,7 +29,6 @@ const MovieNavigator = createStackNavigator(
         elevation: 0,
         shadowOpacity: 0,
         borderBottomWidth: 0,
-        paddingBottom: 20,
       },
       headerTintColor: "#c1071e",
       headerTitleStyle: {
@@ -110,7 +109,6 @@ const NetFavNavigator = createStackNavigator(
         elevation: 0,
         shadowOpacity: 0,
         borderBottomWidth: 0,
-        paddingBottom: 20,
       },
       headerTintColor: "#c1071e",
       headerTitleStyle: {
