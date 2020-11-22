@@ -24,7 +24,7 @@ const ProfileScreen = (props) => {
         <Text style={styles.innerBoxText}>Display Name</Text>
         <Button
           title="Logout"
-          color="red"
+          color="#c1071e"
           style={styles.button}
           onPress={() => {
             props.navigation.navigate("Login");

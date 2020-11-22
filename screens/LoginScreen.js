@@ -21,13 +21,13 @@ const LoginScreen = (props) => {
         <TextInput
           style={styles.textinput}
           placeholder="Enter Username"
-          placeholderTextColor="#ffffff"
+          placeholderTextColor="#dedede"
         />
         <Text style={styles.headerText2}>Password</Text>
         <TextInput
           style={styles.textinput}
           placeholder="Enter Password"
-          placeholderTextColor="#ffffff"
+          placeholderTextColor="#dedede"
         />
         <Text
           style={styles.fgpassword}
@@ -74,7 +74,7 @@ const styles = StyleSheet.create({
     borderColor: "#fff1",
     borderWidth: 1,
     backgroundColor: "#232323",
-    color: "white",
+    color: "#dedede",
     display: "block",
     // marginLeft: "auto",
     // marginRight: "auto",
@@ -82,20 +82,20 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   headerText: {
-    color: "white",
+    color: "#dedede",
     fontSize: "200%",
     // fontWeight: "bold",
     marginBottom: 10,
   },
   headerText2: {
-    color: "#ffffff",
+    color: "#dedede",
     fontSize: "100%",
     marginBottom: 10,
   },
   fgpassword: {
     marginBottom: 10,
     // marginHorizontal: 10,
-    color: "white",
+    color: "#dedede",
     textDecorationLine: "underline",
     display: "block",
     marginRight: "auto",
