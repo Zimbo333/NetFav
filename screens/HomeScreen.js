@@ -65,14 +65,8 @@ const styles = StyleSheet.create({
     alignItems: "flex-start",
   },
   headText: {
-<<<<<<< HEAD
-    color: 'white',
-    fontSize: 18
-
-=======
     color: "white",
     fontSize: 18,
->>>>>>> d80910936d3dbe22a4931616fd45cde97fa2d9dc
   },
   result: {
     color: "white",

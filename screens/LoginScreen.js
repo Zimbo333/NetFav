@@ -91,11 +91,7 @@ const styles = StyleSheet.create({
   },
   headerText: {
     color: "#dedede",
-<<<<<<< HEAD
-    fontSize: 36,
-=======
     fontSize: 38,
->>>>>>> d80910936d3dbe22a4931616fd45cde97fa2d9dc
     // fontWeight: "bold",
     marginBottom: 10,
   },
