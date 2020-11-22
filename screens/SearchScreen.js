@@ -21,7 +21,7 @@ const SearchScreen = (props) => {
     // ส่วนนี้ <View>...</View>ใช้เพื่อการทดลอง และให้คอมเมนต์เมื่อใช้ <FlatList>
     <View style={styles.screen}>
       {/* <View style={styles.container}> */}
-      <TextInput style={styles.textinput} placeholder='Type movie name...'/>
+      <TextInput style={styles.textinput} placeholder='Type movie name...' placeholderTextColor='#dedede'/>
       <View style={styles.button}>
       <Button
         title="Search"
@@ -96,10 +96,10 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     marginTop: 30,
     backgroundColor: '#0F0F0F',
-    color: '#aaa',
-    // borderColor: "#fff1",
+    color: '#dedede',
     borderStyle: 'solid',
-    borderWidth: 1
+    borderWidth: 1,
+    borderColor: '#fff1'
   },
   button:{
     width: 150,

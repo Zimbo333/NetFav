@@ -43,8 +43,9 @@ const LoginScreen = (props) => {
             props.navigation.navigate("Home");
           }}
         />
+        <Text style={{color:'white'}}>Or</Text>
         <Button
-          title="Register Test"
+          title="Register"
           color="#c1071e"
           style={styles.button}
           onPress={() => {
