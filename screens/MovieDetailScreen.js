@@ -24,10 +24,14 @@ const MovieDetailScreen = (props) => {
           <ImageBackground
             source={{ uri: selectedMov.coverImgUrl }}
             style={styles.img}>
-            </ImageBackground>
+          </ImageBackground>
           <Text style={styles.headText}>{selectedMov.name}</Text>
           <Text style={styles.ontext}>เรื่องย่อ:</Text>
           <Text style={styles.ontext}>{selectedMov.description}</Text>
+          <View style={{marginTop:8}}>
+          <Text style={styles.ontext}><Text style={{color:'red'}}>Season: </Text>{selectedMov.season}</Text>
+          <Text style={styles.ontext}><Text style={{color:'red'}}>Episode:</Text> {selectedMov.episode}</Text>
+          </View>
         </View>
       </View>
     </ScrollView>
@@ -76,7 +80,8 @@ const styles = StyleSheet.create({
   headText: {
     color: "white",
     fontSize: 24,
-    marginTop:10,
+    marginTop: 10,
+    textDecorationLine: 'underline',
   },
   result: {
     color: "white",
@@ -88,9 +93,9 @@ const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: '#111111',
   },
-  ontext:{
+  ontext: {
     marginTop: 5,
-    color:'white',
+    color: 'white',
   }
 });
 
