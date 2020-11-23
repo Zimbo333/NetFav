@@ -38,7 +38,7 @@ const MovieItem = (props) => {
 const styles = StyleSheet.create({
   mealItem: {
     height: 150,
-    width: "45%",
+    width: "47%",
     overflow: "hidden",
 
   },

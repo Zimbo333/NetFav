@@ -9,12 +9,13 @@ import {
   Platform,
   TextInput,
   Linking,
+  ScrollView
 } from "react-native";
 import Component from "react";
 
 const AddMovieScreen = (props) => {
   return (
-    <View style={styles.screen}>
+    <ScrollView style={styles.screen}>
       <View style={styles.container}>
         <Text style={styles.headerText}>Add Movie</Text>
         <Text style={styles.headerText2}>Movie name</Text>
@@ -47,7 +48,6 @@ const AddMovieScreen = (props) => {
           placeholder="Movie cover url"
           placeholderTextColor="#aaa"
         />
-        <br/>
         <Button
           title="Add"
           color="#c1071e"
@@ -57,7 +57,7 @@ const AddMovieScreen = (props) => {
           }}
         />
       </View>
-    </View>
+    </ScrollView>
   );
 };
 

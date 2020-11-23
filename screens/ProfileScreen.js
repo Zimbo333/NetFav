@@ -7,17 +7,16 @@ import {
   StyleSheet,
   TouchableOpacity,
   Platform,
+  ScrollView
 } from "react-native";
-import { ScrollView } from "react-native-gesture-handler";
-// import { CATEGORIES } from "../data/dummy-data";
-// import CategoryGridTile from "../components/CategoryGridTile";
+// import { ScrollView } from "react-native-gesture-handler";
 
 const ProfileScreen = (props) => {
   return (
     // <FlatList data={CATEGORIES} renderItem={renderGridItem} numColumns={2} />
 
     // ส่วนนี้ <View>...</View>ใช้เพื่อการทดลอง และให้คอมเมนต์เมื่อใช้ <FlatList>
-    <View style={styles.screen}>
+    <ScrollView style={styles.screen}>
       {/* <View style={styles.container}> */}
       {/* <ScrollView style={styles.scrollContainer}> */}
       <View style={styles.box0}>
@@ -41,7 +40,7 @@ const ProfileScreen = (props) => {
       </View>
       {/* </View> */}
       {/* </ScrollView> */}
-    </View>
+    </ScrollView>
   );
 };
 
@@ -59,22 +58,16 @@ const styles = StyleSheet.create({
   },
   screen: {
     flex: 1,
-    backgroundColor: "black",
-    justifyContent: "center",
-    alignItems: "stretch",
+    backgroundColor: "#111111",
+    // justifyContent: "center",
+    // alignItems: "stretch",
   },
-  // container: {
-  //   margin: 20,
-  //   padding: 10,
-  //   flex: 1,
-  //   backgroundColor: 'white',
 
-  // },
   box0: {
     margin: 10,
     padding: 10,
     flex: 0.5,
-    backgroundColor: "#111111",
+    backgroundColor: "black",
     alignItems: "flex-start",
     justifyContent: "space-between",
     flexDirection: "row",
@@ -83,7 +76,7 @@ const styles = StyleSheet.create({
     margin: 10,
     padding: 10,
     flex: 1,
-    backgroundColor: "#111111",
+    backgroundColor: "black",
     alignItems: "flex-start",
     flexDirection: "row",
     flexWrap: "wrap",
