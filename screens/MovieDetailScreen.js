@@ -7,23 +7,43 @@ import {
   StyleSheet,
   TouchableOpacity,
   Platform,
+  ScrollView
 } from "react-native";
 // import { CATEGORIES } from "../data/dummy-data";
 // import CategoryGridTile from "../components/CategoryGridTile";
 
 const MovieDetailScreen = (props) => {
   return (
-    // <FlatList data={CATEGORIES} renderItem={renderGridItem} numColumns={2} />
-
-    // ส่วนนี้ <View>...</View>ใช้เพื่อการทดลอง และให้คอมเมนต์เมื่อใช้ <FlatList>
-    <View style={styles.screen}>
-      {/* <View style={styles.container}> */}
+  
+    <ScrollView style={styles.scrollView}>
+    {/* <View style={styles.screen}> */}
       <Text style={styles.result}>Update your Progress</Text>
-      <View style={styles.box1}>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      <Text style={styles.result}>Update your Progress</Text>
+      {/* <View style={styles.box1}> */}
         <Text style={styles.headText}>Movie</Text>
-      </View>
-      {/* </View> */}
-    </View>
+      {/* </View>
+    </View> */}
+    </ScrollView>
+  
   );
 };
 
@@ -71,6 +91,10 @@ const styles = StyleSheet.create({
     marginTop: 20,
     fontSize: 18,
     fontWeight: "bold",
+  },
+  scrollView: {
+    backgroundColor: 'pink',
+    marginHorizontal: 20,
   },
 });
 
