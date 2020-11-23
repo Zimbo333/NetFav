@@ -1,7 +1,7 @@
 import Movies from "../models/movies";
 
 export const MOVIES = [
-    new Movies("1", "Naruto", "อนิเมะยอดนิยมอันดับต้นๆ ของประเทศญี่ปุ่น ที่ยังคงได้รับความนิยมมาจนถึงปัจจุบัน", "9", "15", "https://vignette.wikia.nocookie.net/naruto/images/2/28/Rasengan.png/revision/latest?cb=20150702135410",
+    new Movies("1", "Naruto", "อนิเมะยอดนิยมอันดับต้นๆ ของประเทศญี่ปุ่น ที่ยังคงได้รับความนิยมมาจนถึงปัจจุบัน", "9", "15", "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRE7uwoMwUTdlghu2FHggoG66s6nG47RBRJRQ&usqp=CAU",
         ["สนุกมากกก", "กระสุนวงจักรสุดยอด"], "20", "55"),
     new Movies("2", "Stranger Things", "ซีรีส์สยองขวัญ ที่จะพาคุณไปพบกับความลึกลับแห่งเมือง Hawkins", "4", "10", "https://f.ptcdn.info/881/064/000/pua471816Z1ZsayqMSx-o.jpg",
         ["น้องเดโมม น่าร้ากก", "รำคาญนางเอก 555555"], "10", "20"),
