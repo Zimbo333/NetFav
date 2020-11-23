@@ -9,48 +9,42 @@ import {
   Platform,
   ScrollView
 } from "react-native";
-// import { CATEGORIES } from "../data/dummy-data";
-// import CategoryGridTile from "../components/CategoryGridTile";
+import { MOVIES } from "../data/dummy-data";
 
 const MovieDetailScreen = (props) => {
+  const renderMovieDetail = (ItemData) => {
+    return (
+      <UpProItem
+        title={itemData.item.name}
+        image={itemData.item.coverImgUrl}
+      />
+    )
+  }
+  const movId = props.navigation.getParam('moviesId')
   return (
-  
+
     <ScrollView style={styles.scrollView}>
-    {/* <View style={styles.screen}> */}
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      <Text style={styles.result}>Update your Progress</Text>
-      {/* <View style={styles.box1}> */}
-        <Text style={styles.headText}>Movie</Text>
-      {/* </View>
-    </View> */}
+      <View style={styles.screen}>
+        <View style={styles.box1}>
+          <Text style={styles.headText}>Movie</Text>
+          <Text>{movId.title}</Text>
+        </View>
+      </View>
     </ScrollView>
-  
+
   );
 };
 
 // กำหนด navigationOptions เช่่น การปรับแต่งเฮดเดอร์ที่นี่ได้
-MovieDetailScreen.navigationOptions = {
-  headerTintColor: "white",
-  
+MovieDetailScreen.navigationOptions = (navigationData) => {
+  const moviesId = navigationData.navigation.getParam('moviesId')
+  const selectedMovie = MOVIES.find((mov) => mov.id === moviesId);
+  return{
+    headerTintColor: "white",
+    headerTitle: selectedMovie.name
+  }
+
+
 };
 
 const styles = StyleSheet.create({

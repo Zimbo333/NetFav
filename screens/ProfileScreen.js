@@ -45,7 +45,7 @@ const ProfileScreen = (props) => {
       </View>
       <Text style={styles.headText}>Finished</Text>
       <View style={styles.box1}>
-        <View style={styles.movieBox}></View>
+        <FlatList data={MOVIES.slice(1,2)} renderItem={renderUpMovie} numColumns={1} />
       </View>
     </ScrollView>
   );
@@ -84,7 +84,7 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "black",
     alignItems: "flex-start",
-    flexDirection: "row",
+    flexDirection: "column",
     flexWrap: "wrap",
     justifyContent: "space-between",
   },

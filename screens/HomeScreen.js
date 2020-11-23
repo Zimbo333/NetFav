@@ -11,7 +11,7 @@ import {
 } from "react-native";
 import MovieItem from "../components/MovieItem";
 import UpProItem from "../components/UpProItem";
-import { MOVIES } from "../data/dummy-data"
+import { MOVIES } from "../data/dummy-data";
 const HomeScreen = (props) => {
   const renderUpMovie = (itemData) => {
     return (
@@ -20,7 +20,7 @@ const HomeScreen = (props) => {
         image={itemData.item.coverImgUrl}
         onSelectMeal={() => {
           {
-            props.navigation.navigate("MovieDetail");
+            props.navigation.navigate("MovieDetail",{'moviesId': itemData.item.id});
           }
         }}
       />
@@ -34,12 +34,14 @@ const HomeScreen = (props) => {
         image={itemData.item.coverImgUrl}
         onSelectMeal={() => {
           {
-            props.navigation.navigate("MovieDetail");
+            props.navigation.navigate("MovieDetail", {'moviesId': itemData.item.id});
           }
         }}
       />
     )
   }
+  const movId = props.navigation.getParam('moviesId')
+
   return (
 
     // <View style={styles.screen}>
