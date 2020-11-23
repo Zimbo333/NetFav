@@ -41,7 +41,7 @@ const ProfileScreen = (props) => {
       </View>
       <Text style={styles.headText}>Currenlty Watching</Text>
       <View style={styles.box1}>
-        <FlatList data={MOVIES} renderItem={renderUpMovie} numColumns={1} />
+        <FlatList data={MOVIES.slice(1,4)} renderItem={renderUpMovie} numColumns={1} />
       </View>
       <Text style={styles.headText}>Finished</Text>
       <View style={styles.box1}>
