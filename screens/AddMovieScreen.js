@@ -47,6 +47,7 @@ const AddMovieScreen = (props) => {
           placeholder="Movie cover url"
           placeholderTextColor="#aaa"
         />
+        <br/>
         <Button
           title="Add"
           color="#c1071e"
