@@ -40,12 +40,14 @@ const styles = StyleSheet.create({
     height: 150,
     width: "45%",
     overflow: "hidden",
+
   },
   mealRow: {
     flexDirection: "row",
   },
   mealHeader: {
     height: "85%",
+    
   },
 
   mealDetail: {

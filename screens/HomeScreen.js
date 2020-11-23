@@ -191,8 +191,10 @@ const styles = StyleSheet.create({
   // },
   box1: {
     margin: 10,
-    paddingLeft: 5,
+    paddingLeft: 10,
     paddingRight:20,
+    paddingTop:10,
+    paddingBottom:10,
     flex: 1,
     backgroundColor: "black",
     alignItems: "flex-start",
@@ -202,7 +204,7 @@ const styles = StyleSheet.create({
   },
   box2: {
     margin: 10,
-    padding: 10,
+    padding: 10, 
     flex: 1,
     flexDirection: "row",
     flexWrap: "wrap",
