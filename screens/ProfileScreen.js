@@ -41,12 +41,6 @@ const ProfileScreen = (props) => {
       </View>
       {/* </View> */}
       {/* </ScrollView> */}
-      <Button
-        title="Check"
-        onPress={() => {
-          props.navigation.navigate("MovieDetail");
-        }}
-      ></Button>
     </View>
   );
 };

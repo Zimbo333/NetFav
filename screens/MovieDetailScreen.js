@@ -93,8 +93,7 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   scrollView: {
-    backgroundColor: 'pink',
-    marginHorizontal: 20,
+    backgroundColor: '#111111',
   },
 });
 

@@ -7,7 +7,7 @@ import {
   ImageBackground,
 } from "react-native";
 
-const MovieItem = (props) => {
+const UpProItem = (props) => {
   return (
     <View style={styles.mealItem}>
       <TouchableOpacity onPress={props.onSelectMeal}>
@@ -24,11 +24,6 @@ const MovieItem = (props) => {
               </View>
             </ImageBackground>
           </View>
-          {/* <View style={{ ...styles.mealRow, ...styles.mealDetail }}>
-            <Text>{props.duration}m</Text>
-            <Text>{props.complexity.toUpperCase()}</Text>
-            <Text>{props.affordability.toUpperCase()}</Text>
-          </View> */}
         </View>
       </TouchableOpacity>
     </View>
@@ -38,14 +33,15 @@ const MovieItem = (props) => {
 const styles = StyleSheet.create({
   mealItem: {
     height: 150,
-    width: "45%",
+    width: "100%",
     overflow: "hidden",
+    margin:4
   },
   mealRow: {
     flexDirection: "row",
   },
   mealHeader: {
-    height: "85%",
+    height: "100%",
   },
 
   mealDetail: {
@@ -72,4 +68,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MovieItem;
+export default UpProItem;
