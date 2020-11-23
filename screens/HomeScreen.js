@@ -46,12 +46,13 @@ const HomeScreen = (props) => {
     <ScrollView style={styles.scrollView}>
       <Text style={styles.result}>Update your Progress:</Text>
       <View style={styles.box1}>
-        <FlatList data={MOVIES} renderItem={renderUpMovie} numColumns={1} />
+        <FlatList data={MOVIES.slice(0, 3)} renderItem={renderUpMovie} numColumns={1} />
       </View>
       <Text style={styles.result
       }>Trending Now:</Text>
       <View style={styles.box2}>
-        <FlatList contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap",padding:10, paddingLeft:25 }} columnWrapperStyle={{ justifyContent: 'space-between' }} data={MOVIES} renderItem={renderMovieItem} numColumns={2} style={styles.flatListContainer} />
+        <FlatList contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap",padding:10, paddingLeft:25 }} columnWrapperStyle={{ justifyContent: 'space-between' }}
+         data={MOVIES} renderItem={renderMovieItem} numColumns={2} style={styles.flatListContainer} />
       </View>
     </ScrollView>
   );
@@ -64,7 +65,7 @@ HomeScreen.navigationOptions = {
 
 const styles = StyleSheet.create({
   flatListContainer: {
-    backgroundColor: "yellow",
+    backgroundColor: "black",
 
   },
   screen: {
@@ -87,7 +88,7 @@ const styles = StyleSheet.create({
     paddingTop: 10,
     paddingBottom: 10,
     flex: 1,
-    backgroundColor: "white",
+    backgroundColor: "black",
     alignItems: "flex-start",
     flexDirection: "column",
     flexWrap: "wrap",

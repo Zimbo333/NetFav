@@ -9,16 +9,25 @@ import {
   Platform,
   ScrollView
 } from "react-native";
-// import { ScrollView } from "react-native-gesture-handler";
+import { MOVIES } from "../data/dummy-data";
+import MovieItem from "../components/MovieItem";
+import UpProItem from "../components/UpProItem";
 
 const ProfileScreen = (props) => {
+  const renderUpMovie = (itemData) => {
+    return (<UpProItem
+        title={itemData.item.name}
+        image={itemData.item.coverImgUrl}
+        onSelectMeal={() => {
+          {
+            props.navigation.navigate("MovieDetail");
+          }
+        }}
+      />
+    )
+  }
   return (
-    // <FlatList data={CATEGORIES} renderItem={renderGridItem} numColumns={2} />
-
-    // ส่วนนี้ <View>...</View>ใช้เพื่อการทดลอง และให้คอมเมนต์เมื่อใช้ <FlatList>
     <ScrollView style={styles.screen}>
-      {/* <View style={styles.container}> */}
-      {/* <ScrollView style={styles.scrollContainer}> */}
       <View style={styles.box0}>
         <Text style={styles.innerBoxText}>Display Name</Text>
         <Button
@@ -32,19 +41,16 @@ const ProfileScreen = (props) => {
       </View>
       <Text style={styles.headText}>Currenlty Watching</Text>
       <View style={styles.box1}>
-        <View style={styles.movieBox}></View>
+        <FlatList data={MOVIES} renderItem={renderUpMovie} numColumns={1} />
       </View>
       <Text style={styles.headText}>Finished</Text>
       <View style={styles.box1}>
         <View style={styles.movieBox}></View>
       </View>
-      {/* </View> */}
-      {/* </ScrollView> */}
     </ScrollView>
   );
 };
 
-// กำหนด navigationOptions เช่่น การปรับแต่งเฮดเดอร์ที่นี่ได้
 ProfileScreen.navigationOptions = {
   headerTitle: "NetFav",
   headerLeft: null,
