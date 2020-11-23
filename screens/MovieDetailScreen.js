@@ -8,50 +8,67 @@ import {
   TouchableOpacity,
   Platform,
   ScrollView,
-  ImageBackground
+  ImageBackground,
 } from "react-native";
 import { MOVIES } from "../data/dummy-data";
 
 const MovieDetailScreen = (props) => {
-
-  const moviId = props.navigation.getParam('moviesId')
+  
+  const moviId = props.navigation.getParam("moviesId");
   const selectedMov = MOVIES.find((movie) => movie.id === moviId);
   return (
-
     <ScrollView style={styles.scrollView}>
       <View style={styles.screen}>
         <View style={styles.box1}>
           <ImageBackground
             source={{ uri: selectedMov.coverImgUrl }}
-            style={styles.img}>
-          </ImageBackground>
+            style={styles.img}
+          ></ImageBackground>
           <Text style={styles.headText}>{selectedMov.name}</Text>
           <Text style={styles.ontext}>เรื่องย่อ:</Text>
           <Text style={styles.ontext}>{selectedMov.description}</Text>
-          <View style={{marginTop:8}}>
-          <Text style={styles.ontext}><Text style={{color:'red'}}>Season: </Text>{selectedMov.season}</Text>
-          <Text style={styles.ontext}><Text style={{color:'red'}}>Episode:</Text> {selectedMov.episode}</Text>
+          <View style={{ marginTop: 8 }}>
+            <Text style={styles.ontext}>
+              <Text style={{ color: "red" }}>Season: </Text>
+              {selectedMov.season}
+            </Text>
+            <Text style={styles.ontext}>
+              <Text style={{ color: "red" }}>Episode:</Text>{" "}
+              {selectedMov.episode}
+            </Text>
+            {/* <FlatList
+              data={selectedMov.comments}
+              renderItem={selectedMov.comments}
+              numColumns={1}
+            /> */}
+            <Text style={styles.ontext}>Comment:</Text>
+            {selectedMov.comments.map((data) => {
+            return (
+              <Text key={data} style={styles.data}>- {data}</Text>
+            )
+
+          })}
           </View>
         </View>
       </View>
     </ScrollView>
-
   );
 };
 
 // กำหนด navigationOptions เช่่น การปรับแต่งเฮดเดอร์ที่นี่ได้
 MovieDetailScreen.navigationOptions = (navigationData) => {
-  const moviesId = navigationData.navigation.getParam('moviesId')
+  const moviesId = navigationData.navigation.getParam("moviesId");
   const selectedMovie = MOVIES.find((mov) => mov.id === moviesId);
   return {
     headerTintColor: "red",
-    headerTitle: selectedMovie.name
-  }
-
-
+    headerTitle: selectedMovie.name,
+  };
 };
 
 const styles = StyleSheet.create({
+  data:{
+    color: "white",
+  },
   screen: {
     flex: 1,
     backgroundColor: "#111111",
@@ -59,7 +76,7 @@ const styles = StyleSheet.create({
     alignItems: "stretch",
   },
   img: {
-    width: '100%',
+    width: "100%",
     height: 300,
     justifyContent: "flex-end",
   },
@@ -81,7 +98,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 24,
     marginTop: 10,
-    textDecorationLine: 'underline',
+    textDecorationLine: "underline",
   },
   result: {
     color: "white",
@@ -91,12 +108,12 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   scrollView: {
-    backgroundColor: '#111111',
+    backgroundColor: "#111111",
   },
   ontext: {
     marginTop: 5,
-    color: 'white',
-  }
+    color: "white",
+  },
 });
 
 export default MovieDetailScreen;
