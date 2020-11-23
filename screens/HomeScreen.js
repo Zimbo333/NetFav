@@ -40,7 +40,6 @@ const HomeScreen = (props) => {
       />
     )
   }
-  const movId = props.navigation.getParam('moviesId')
 
   return (
 

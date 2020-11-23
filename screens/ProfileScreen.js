@@ -20,7 +20,7 @@ const ProfileScreen = (props) => {
         image={itemData.item.coverImgUrl}
         onSelectMeal={() => {
           {
-            props.navigation.navigate("MovieDetail");
+            props.navigation.navigate("MovieDetail",{'moviesId': itemData.item.id});
           }
         }}
       />

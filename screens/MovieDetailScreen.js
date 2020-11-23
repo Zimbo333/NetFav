@@ -7,27 +7,27 @@ import {
   StyleSheet,
   TouchableOpacity,
   Platform,
-  ScrollView
+  ScrollView,
+  ImageBackground
 } from "react-native";
 import { MOVIES } from "../data/dummy-data";
 
 const MovieDetailScreen = (props) => {
-  const renderMovieDetail = (ItemData) => {
-    return (
-      <UpProItem
-        title={itemData.item.name}
-        image={itemData.item.coverImgUrl}
-      />
-    )
-  }
-  const movId = props.navigation.getParam('moviesId')
+
+  const moviId = props.navigation.getParam('moviesId')
+  const selectedMov = MOVIES.find((movie) => movie.id === moviId);
   return (
 
     <ScrollView style={styles.scrollView}>
       <View style={styles.screen}>
         <View style={styles.box1}>
-          <Text style={styles.headText}>Movie</Text>
-          <Text>{movId.title}</Text>
+          <ImageBackground
+            source={{ uri: selectedMov.coverImgUrl }}
+            style={styles.img}>
+            </ImageBackground>
+          <Text style={styles.headText}>{selectedMov.name}</Text>
+          <Text style={styles.ontext}>เรื่องย่อ:</Text>
+          <Text style={styles.ontext}>{selectedMov.description}</Text>
         </View>
       </View>
     </ScrollView>
@@ -39,8 +39,8 @@ const MovieDetailScreen = (props) => {
 MovieDetailScreen.navigationOptions = (navigationData) => {
   const moviesId = navigationData.navigation.getParam('moviesId')
   const selectedMovie = MOVIES.find((mov) => mov.id === moviesId);
-  return{
-    headerTintColor: "white",
+  return {
+    headerTintColor: "red",
     headerTitle: selectedMovie.name
   }
 
@@ -54,13 +54,11 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "stretch",
   },
-  // container: {
-  //   margin: 20,
-  //   padding: 10,
-  //   flex: 1,
-  //   backgroundColor: 'white',
-
-  // },
+  img: {
+    width: '100%',
+    height: 300,
+    justifyContent: "flex-end",
+  },
   box1: {
     margin: 10,
     padding: 10,
@@ -77,7 +75,8 @@ const styles = StyleSheet.create({
   },
   headText: {
     color: "white",
-    fontSize: 18,
+    fontSize: 24,
+    marginTop:10,
   },
   result: {
     color: "white",
@@ -89,6 +88,10 @@ const styles = StyleSheet.create({
   scrollView: {
     backgroundColor: '#111111',
   },
+  ontext:{
+    marginTop: 5,
+    color:'white',
+  }
 });
 
 export default MovieDetailScreen;
