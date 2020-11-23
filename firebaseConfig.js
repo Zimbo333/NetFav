@@ -10,9 +10,10 @@ const firebaseConfig = {
   messagingSenderId: "762652878476",
   appId: "1:762652878476:web:78dd490bb4936307007da9",
 };
+const app = firebase.initializeApp(firebaseConfig);
 
-firebase.initializeApp(firebaseConfig);
+const db = firebase.firestore(app);
 
-const dbh = firebase.firestore();
+export const MovieRef = db.collection('movie'); 
 
-export const db = dbh.collection('movie');
+export { firebase };

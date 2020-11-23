@@ -3,19 +3,12 @@ import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
 import NetFavNavigator from "./navigator/NetFavNavigator";
-import { db } from "./fb-firestore/firestore";
+import firebase from "firebase";
 
-export default function App() {
-  return (
-      <NetFavNavigator />
-      );
+class App extends React.Component {
+  render() {
+    return <NetFavNavigator />;
+  }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#45524b",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+export default App;
