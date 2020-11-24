@@ -37,12 +37,12 @@ const ProfileScreen = (props) => {
           <Text style={styles.innerBoxText}>@username</Text>
         </View>
         <View style={styles.ButtonContainer}>
-          <Button
+          {/* <Button
             title="Follow"
             color="#c1071e"
             style={styles.button}
             onPress={() => {}}
-          />
+          /> */}
           <Button
             title="Logout"
             color="#c1071e"
@@ -125,8 +125,9 @@ const styles = StyleSheet.create({
   ButtonContainer: {
     flexDirection: "row",
     flex: 1,
-    justifyContent: "space-between",
+    // justifyContent: "space-between",
     alignSelf: "center",
+    justifyContent: "flex-end",
   },
   button: {
     margin: 10,
