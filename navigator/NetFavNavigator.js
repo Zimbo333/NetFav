@@ -31,9 +31,10 @@ const ProfileNavigator = createStackNavigator(
         shadowOpacity: 0,
         borderBottomWidth: 0,
       },
-      headerTintColor: "#c1071e",
+      headerTintColor: "white",
       headerTitleStyle: {
         fontWeight: "bold",
+        color: "#c1071e",
       },
     },
   }
@@ -54,9 +55,10 @@ const SearchNavigator = createStackNavigator(
         shadowOpacity: 0,
         borderBottomWidth: 0,
       },
-      headerTintColor: "#c1071e",
+      headerTintColor: "white",
       headerTitleStyle: {
         fontWeight: "bold",
+        color: "#c1071e",
       },
     },
   }
@@ -76,9 +78,10 @@ const MovieNavigator = createStackNavigator(
         shadowOpacity: 0,
         borderBottomWidth: 0,
       },
-      headerTintColor: "#c1071e",
+      headerTintColor: "white",
       headerTitleStyle: {
         fontWeight: "bold",
+        color: "#c1071e",
       },
     },
   }
@@ -161,7 +164,7 @@ const NetFavNavigator = createStackNavigator(
         fontWeight: "bold",
       },
       headerLeft: null,
-      headerShown: false
+      headerShown: false,
     },
   }
 );
