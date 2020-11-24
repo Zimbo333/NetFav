@@ -11,12 +11,13 @@ import {
   Linking,
 } from "react-native";
 import Component from "react";
+import { AntDesign } from '@expo/vector-icons';
 
 const LoginScreen = (props) => {
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
-        <Text style={styles.headerText}>Sign in</Text>
+        {/* <Text style={styles.headerText}>Sign in</Text>
         <Text style={styles.headerText2}>Username</Text>
         <TextInput
           style={styles.textinput}
@@ -30,13 +31,13 @@ const LoginScreen = (props) => {
           placeholder="Enter Password"
           placeholderTextColor="#dedede"
         />
-        <Text
+        {/* <Text
           style={styles.fgpassword}
           onPress={() => Linking.openURL("http://google.com")}
         >
           Forgotten password?
-        </Text>
-        <Button
+        </Text> */}
+        {/* <Button
           title="Login"
           color="#c1071e"
           style={styles.button}
@@ -44,15 +45,12 @@ const LoginScreen = (props) => {
             props.navigation.navigate("Home");
           }}
         />
-        <Text style={{color:'white'}}>Or</Text>
-        <Button
-          title="Register"
-          color="#c1071e"
-          style={styles.button}
-          onPress={() => {
-            props.navigation.navigate("Register");
-          }}
-        />
+        <Text style={{color:'white', textAlign: 'center', justifyContent: 'center', padding: 10}}>Or</Text> */}
+        <Text style={{color:'red',textAlign:'center',justifyContent:'center',fontSize:55, marginTop:'20%'}}>NetFav</Text>
+        <AntDesign name="google" size={30} color="white" style={{textAlign:'center',justifyContent:'center',marginTop:25}} />
+        <View style={{width:'100%',height:50, backgroundColor:'#1877f2', textAlign:'center',borderRadius:10, marginTop:'10%'}}>
+        <Text onPress={() => Linking.openURL("http://google.com")} style={{marginTop:15, color:'white', fontSize:18}}>Sign in with Google</Text>
+        </View>
       </View>
     </View>
   );
@@ -103,14 +101,13 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   fgpassword: {
-    marginBottom: 10,
-    // marginHorizontal: 10,
-    color: "#dedede",
-    textDecorationLine: "underline",
-    marginRight: "auto",
+    color: "white",
+    // textDecorationLine: "underline",
+    textAlign: 'center',
+    justifyContent: 'center'
   },
   button: {
-    marginBottom: 10,
+    margin: 10,
   },
 });
 
