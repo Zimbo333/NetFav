@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   View,
   Text,
@@ -13,10 +13,12 @@ import {
 } from "react-native";
 import { MOVIES } from "../data/dummy-data";
 import CommentItem from "../components/CommentItem";
+import { Picker } from "@react-native-picker/picker";
 
 const MovieDetailScreen = (props) => {
   const moviId = props.navigation.getParam("moviesId");
   const selectedMov = MOVIES.find((movie) => movie.id === moviId);
+  const [selectedValue, setSelectedValue] = useState("1");
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.screen}>
@@ -40,6 +42,16 @@ const MovieDetailScreen = (props) => {
               <Text style={{ color: "red" }}>Episode:</Text>{" "}
               {selectedMov.episode}
             </Text>
+            <Picker
+              selectedValue={selectedValue}
+              style={{ height: 50, width: 150 }}
+              onValueChange={(itemValue, itemIndex) =>
+                setSelectedValue(itemValue)
+              }
+            >
+              <Picker.Item label="1" value="1" />
+              <Picker.Item label="2" value="2" />
+            </Picker>
 
             <Text style={styles.ontext}>
               <Text style={{ color: "red" }}>Number of Finished:</Text>{" "}
