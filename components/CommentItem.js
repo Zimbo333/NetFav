@@ -13,20 +13,17 @@ const CommentItem = (props) => {
   return (
     <View style={styles.commentContainer}>
       <View style={styles.commentContainer1}>
-        <Image
-          style={styles.img}
-          source={{
-            uri: "https://reactnative.dev/img/tiny_logo.png",
-          }}
-        />
+        <Image style={styles.img} source={{ uri: props.image }} />
         <View style={styles.textContainer}>
           <Text style={styles.comment}>
             <Text style={styles.commentInnerText}>{props.authorName}</Text> has
-            watching EP.{props.episode} on{" "}
-            <Text style={styles.commentInnerText}>{props.time}</Text>
+            watching EP.{props.episode}{" "}
+          </Text>
+          <Text style={styles.comment}>
+            <Text style={styles.commentInnerText2}>on {props.time}</Text>
           </Text>
           <View style={styles.commentContainer2}>
-            <Text style={styles.commentText}>กระสุนวงจักรสุดยอด</Text>
+            <Text style={styles.commentText}>{props.comment}</Text>
           </View>
         </View>
       </View>
@@ -80,8 +77,8 @@ const styles = StyleSheet.create({
     // fontFamily: "open-sans-bold",
     fontSize: 12,
     color: "white",
-    textAlign: "center",
     fontWeight: "bold",
+    justifyContent: "flex-start",
   },
   commentInnerText: {
     color: "red",
@@ -94,11 +91,17 @@ const styles = StyleSheet.create({
   textContainer: {
     // backgroundColor: "blue",
     alignSelf: "center",
+    justifyContent: "flex-start",
   },
   commentText: {
     margin: 5,
     fontSize: 12,
     color: "white",
+  },
+  commentInnerText2: {
+    justifyContent: "flex-start",
+    fontSize: 10,
+    color: "gray",
   },
 });
 

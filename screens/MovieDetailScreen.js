@@ -94,6 +94,10 @@ const MovieDetailScreen = (props) => {
             movieName={selectedMov.name}
             season={selectedMov.season}
             time={"2020-05-25 11:32:33"}
+            comment={"กระสุนวงจักรสุดยอด"}
+            image={
+              "https://scontent.fbkk5-8.fna.fbcdn.net/v/t1.0-9/61900010_2257196431030497_3782796938487791616_o.jpg?_nc_cat=106&ccb=2&_nc_sid=09cbfe&_nc_eui2=AeHwH9KpfjdVsHQsZVGDUdeLoXpPU11cvVWhek9TXVy9VcDsxibpOdi0-VeMSMwueEYkl4olX17_lrstjWrtorgW&_nc_ohc=gTp2-76qgwoAX8ijVHM&_nc_ht=scontent.fbkk5-8.fna&oh=284bd29d38c52ccc9c9dec17db7273b6&oe=5FE15EC8"
+            }
             onSelectMeal={() => {
               {
                 // props.navigation.navigate("MovieDetail", {
@@ -103,11 +107,15 @@ const MovieDetailScreen = (props) => {
             }}
           />
           <CommentItem
-            authorName={"Tinto"}
+            authorName={"Thanawat"}
             episode={"9"}
             movieName={selectedMov.name}
             season={selectedMov.season}
-            time={"2020-05-25 11:32:33"}
+            time={"2020-05-25 11:50:43"}
+            comment={"คาถาแยกเงาพันร่าง!!!!!"}
+            image={
+              "https://scontent.fbkk5-6.fna.fbcdn.net/v/t1.0-9/16730167_1375883262432703_5084113495274887261_n.jpg?_nc_cat=101&ccb=2&_nc_sid=174925&_nc_eui2=AeEgjd3WQ4RWgZFdKs6R5DE0TREK90zxwZdNEQr3TPHBl4uHq7kf-_Bz7uOs4dPXivP4YOvSMO0QaLUqGs0YkfrR&_nc_ohc=BmieNGze5RIAX8GxpXC&_nc_ht=scontent.fbkk5-6.fna&oh=c34a83a321360f1c8c19fa37d049e9f3&oe=5FE1B4CB"
+            }
             onSelectMeal={() => {
               {
                 // props.navigation.navigate("MovieDetail", {
