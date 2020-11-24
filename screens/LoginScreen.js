@@ -5,7 +5,6 @@ import firebase from "firebase";
 
 class LoginScreen extends Component{
   
-
    isUserEqual = (googleUser, firebaseUser) => {
     if (firebaseUser) {
       var providerData = firebaseUser.providerData;
@@ -106,7 +105,6 @@ class LoginScreen extends Component{
         )
     }
 }
-
 export default LoginScreen;
 
 const style = StyleSheet.create({

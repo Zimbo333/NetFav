@@ -10,8 +10,25 @@ import {
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import { color } from "react-native-reanimated";
-
+import MovieItem from "../components/MovieItem";
+import { MOVIES } from "../data/dummy-data";
 const SearchScreen = (props) => {
+  const renderMovieItem = (itemData) => {
+    return (
+      <MovieItem
+        title={itemData.item.name}
+        season={"(Season " + itemData.item.season + ")"}
+        image={itemData.item.coverImgUrl}
+        onSelectMeal={() => {
+          {
+            props.navigation.navigate("MovieDetail", {
+              moviesId: itemData.item.id,
+            });
+          }
+        }}
+      />
+    );
+  };
   return (
     <View style={styles.screen}>
       {/* <View style={styles.container}> */}
@@ -35,7 +52,7 @@ const SearchScreen = (props) => {
         </View>
         <View style={styles.box1}>
           <Text style={styles.headText}>Finished</Text> */}
-        <Text style={styles.headText}>
+        {/* <Text style={styles.headText}>
           Not Found?{" "}
           <Text
             style={{ color: "red" }}
@@ -45,7 +62,21 @@ const SearchScreen = (props) => {
           >
             Request One.
           </Text>
-        </Text>
+        </Text> */}
+
+        <FlatList
+          contentContainerStyle={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            padding: 10,
+            paddingLeft: 25,
+          }}
+          columnWrapperStyle={{ justifyContent: "space-between" }}
+          data={MOVIES}
+          renderItem={renderMovieItem}
+          numColumns={2}
+          style={styles.flatListContainer}
+        />
       </View>
       {/* <View style={styles.box2}>
           <Text style={styles.headText}>Trending Now</Text>
@@ -120,7 +151,7 @@ const styles = StyleSheet.create({
     color: "white",
     margin: 10,
     marginTop: 30,
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: "bold",
   },
 });

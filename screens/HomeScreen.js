@@ -7,7 +7,7 @@ import {
   StyleSheet,
   TouchableOpacity,
   Platform,
-  ScrollView
+  ScrollView,
 } from "react-native";
 import MovieItem from "../components/MovieItem";
 import UpProItem from "../components/UpProItem";
@@ -16,45 +16,62 @@ const HomeScreen = (props) => {
   const renderUpMovie = (itemData) => {
     return (
       <UpProItem
-        title={itemData.item.name}
+        title={itemData.item.name + " (Season " + itemData.item.season + ")"}
         image={itemData.item.coverImgUrl}
         onSelectMeal={() => {
           {
-            props.navigation.navigate("MovieDetail",{'moviesId': itemData.item.id});
+            props.navigation.navigate("MovieDetail", {
+              moviesId: itemData.item.id,
+            });
           }
         }}
       />
-    )
-  }
+    );
+  };
 
   const renderMovieItem = (itemData) => {
     return (
       <MovieItem
         title={itemData.item.name}
+        season={"(Season " + itemData.item.season + ")"}
         image={itemData.item.coverImgUrl}
         onSelectMeal={() => {
           {
-            props.navigation.navigate("MovieDetail", {'moviesId': itemData.item.id});
+            props.navigation.navigate("MovieDetail", {
+              moviesId: itemData.item.id,
+            });
           }
         }}
       />
-    )
-  }
-  const movId = props.navigation.getParam('moviesId')
+    );
+  };
 
   return (
-
     // <View style={styles.screen}>
     <ScrollView style={styles.scrollView}>
-      <Text style={styles.result}>Update your Progress:</Text>
+      <Text style={styles.result}>Update your Progress</Text>
       <View style={styles.box1}>
-        <FlatList data={MOVIES.slice(0, 3)} renderItem={renderUpMovie} numColumns={1} />
+        <FlatList
+          data={MOVIES.slice(0, 3)}
+          renderItem={renderUpMovie}
+          numColumns={1}
+        />
       </View>
-      <Text style={styles.result
-      }>Trending Now:</Text>
+      <Text style={styles.result}>Trending Now</Text>
       <View style={styles.box2}>
-        <FlatList contentContainerStyle={{ flexDirection: "row", flexWrap: "wrap",padding:10, paddingLeft:25 }} columnWrapperStyle={{ justifyContent: 'space-between' }}
-         data={MOVIES} renderItem={renderMovieItem} numColumns={2} style={styles.flatListContainer} />
+        <FlatList
+          contentContainerStyle={{
+            flexDirection: "row",
+            flexWrap: "wrap",
+            padding: 10,
+            paddingLeft: 25,
+          }}
+          columnWrapperStyle={{ justifyContent: "space-between" }}
+          data={MOVIES}
+          renderItem={renderMovieItem}
+          numColumns={2}
+          style={styles.flatListContainer}
+        />
       </View>
     </ScrollView>
   );
@@ -62,13 +79,12 @@ const HomeScreen = (props) => {
 
 HomeScreen.navigationOptions = {
   headerTitle: "NetFav",
-  headerLeft: null,
+  headerLeft: () => null,
 };
 
 const styles = StyleSheet.create({
   flatListContainer: {
     backgroundColor: "black",
-
   },
   screen: {
     flex: 1,
@@ -114,11 +130,11 @@ const styles = StyleSheet.create({
     color: "white",
     margin: 12,
     marginTop: 20,
-    fontSize: 18,
+    fontSize: 22,
     fontWeight: "bold",
   },
   scrollView: {
-    backgroundColor: '#111111',
+    backgroundColor: "#111111",
   },
 });
 
