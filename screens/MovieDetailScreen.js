@@ -9,18 +9,18 @@ import {
   Platform,
   ScrollView,
   ImageBackground,
+  TextInput,
 } from "react-native";
 import { MOVIES } from "../data/dummy-data";
+import CommentItem from "../components/CommentItem";
 
 const MovieDetailScreen = (props) => {
-  
   const moviId = props.navigation.getParam("moviesId");
   const selectedMov = MOVIES.find((movie) => movie.id === moviId);
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.screen}>
         <View style={styles.box1}>
-
           <ImageBackground
             source={{ uri: selectedMov.coverImgUrl }}
             style={styles.img}
@@ -31,7 +31,6 @@ const MovieDetailScreen = (props) => {
           <Text style={styles.ontext}>เรื่องย่อ:</Text>
           <Text style={styles.ontext}>{selectedMov.description}</Text>
           <View style={{ marginTop: 8 }}>
-
             <Text style={styles.ontext}>
               <Text style={{ color: "red" }}>Season: </Text>
               {selectedMov.season}
@@ -51,16 +50,72 @@ const MovieDetailScreen = (props) => {
               <Text style={{ color: "red" }}>Number of In-Progress:</Text>{" "}
               {selectedMov.numOfInprogress}
             </Text>
- 
-            <Text style={styles.ontext}>Comment:</Text>
-            {selectedMov.comments.map((data) => {
-            
-            return (
-              <Text key={data} style={styles.commentText}>- {data}</Text>
-            );
 
-          })}
+            {/* {selectedMov.comments.map((data) => {
+              return (
+                // <Text key={data} style={styles.commentText}>- {data}</Text>
+                <CommentItem
+                  title={
+                    itemData.item.name +
+                    " (Season " +
+                    itemData.item.season +
+                    ")"
+                  }
+                  image={itemData.item.coverImgUrl}
+                  onSelectMeal={() => {
+                    {
+                      props.navigation.navigate("MovieDetail", {
+                        moviesId: itemData.item.id,
+                      });
+                    }
+                  }}
+                />
+              );
+            })} */}
           </View>
+          <TextInput
+            style={styles.textinput}
+            placeholder="Comment ..."
+            placeholderTextColor="#aaa"
+          />
+          <View style={styles.button}>
+            <Button
+              title="Comment"
+              color="red"
+              onPress={() => {
+                // props.navigation.navigate("MovieDetail");
+              }}
+            />
+          </View>
+          <Text style={styles.ontext}>Comment:</Text>
+          <CommentItem
+            authorName={"Tinto"}
+            episode={"9"}
+            movieName={selectedMov.name}
+            season={selectedMov.season}
+            time={"2020-05-25 11:32:33"}
+            onSelectMeal={() => {
+              {
+                // props.navigation.navigate("MovieDetail", {
+                //   moviesId: itemData.item.id,
+                // });
+              }
+            }}
+          />
+          <CommentItem
+            authorName={"Tinto"}
+            episode={"9"}
+            movieName={selectedMov.name}
+            season={selectedMov.season}
+            time={"2020-05-25 11:32:33"}
+            onSelectMeal={() => {
+              {
+                // props.navigation.navigate("MovieDetail", {
+                //   moviesId: itemData.item.id,
+                // });
+              }
+            }}
+          />
         </View>
       </View>
     </ScrollView>
@@ -123,8 +178,27 @@ const styles = StyleSheet.create({
     marginTop: 5,
     color: "white",
   },
-  commentText:{
+  commentText: {
     color: "white",
+  },
+  textinput: {
+    padding: 10,
+    height: 40,
+    backgroundColor: "white",
+    marginLeft: "auto",
+    marginRight: "auto",
+    width: 325,
+    marginBottom: 10,
+    marginTop: 30,
+    backgroundColor: "#0F0F0F",
+    color: "#dedede",
+    borderStyle: "solid",
+    borderWidth: 1,
+    borderColor: "#fff1",
+  },
+  button: {
+    justifyContent: "center",
+    width: "100%",
   },
 });
 
