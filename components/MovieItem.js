@@ -21,6 +21,9 @@ const MovieItem = (props) => {
                 <Text style={styles.title} numberOfLines={1}>
                   {props.title}
                 </Text>
+                <Text style={styles.title} numberOfLines={1}>
+                  {props.season}
+                </Text>
               </View>
             </ImageBackground>
           </View>
@@ -68,7 +71,7 @@ const styles = StyleSheet.create({
   },
   title: {
     // fontFamily: "open-sans-bold",
-    fontSize: 20,
+    fontSize: 14,
     color: "white",
     textAlign: "center",
   },

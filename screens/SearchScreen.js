@@ -120,7 +120,7 @@ const styles = StyleSheet.create({
     color: "white",
     margin: 10,
     marginTop: 30,
-    fontSize: 28,
+    fontSize: 24,
     fontWeight: "bold",
   },
 });

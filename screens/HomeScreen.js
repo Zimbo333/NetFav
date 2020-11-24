@@ -16,7 +16,7 @@ const HomeScreen = (props) => {
   const renderUpMovie = (itemData) => {
     return (
       <UpProItem
-        title={itemData.item.name}
+        title={itemData.item.name + " (Season " + itemData.item.season + ")"}
         image={itemData.item.coverImgUrl}
         onSelectMeal={() => {
           {
@@ -33,6 +33,7 @@ const HomeScreen = (props) => {
     return (
       <MovieItem
         title={itemData.item.name}
+        season={"(Season " + itemData.item.season + ")"}
         image={itemData.item.coverImgUrl}
         onSelectMeal={() => {
           {
@@ -48,7 +49,7 @@ const HomeScreen = (props) => {
   return (
     // <View style={styles.screen}>
     <ScrollView style={styles.scrollView}>
-      <Text style={styles.result}>Update your Progress:</Text>
+      <Text style={styles.result}>Update your Progress</Text>
       <View style={styles.box1}>
         <FlatList
           data={MOVIES.slice(0, 3)}
@@ -56,7 +57,7 @@ const HomeScreen = (props) => {
           numColumns={1}
         />
       </View>
-      <Text style={styles.result}>Trending Now:</Text>
+      <Text style={styles.result}>Trending Now</Text>
       <View style={styles.box2}>
         <FlatList
           contentContainerStyle={{
@@ -129,7 +130,7 @@ const styles = StyleSheet.create({
     color: "white",
     margin: 12,
     marginTop: 20,
-    fontSize: 18,
+    fontSize: 22,
     fontWeight: "bold",
   },
   scrollView: {

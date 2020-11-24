@@ -20,32 +20,44 @@ const MovieDetailScreen = (props) => {
     <ScrollView style={styles.scrollView}>
       <View style={styles.screen}>
         <View style={styles.box1}>
+
           <ImageBackground
             source={{ uri: selectedMov.coverImgUrl }}
             style={styles.img}
           ></ImageBackground>
+
           <Text style={styles.headText}>{selectedMov.name}</Text>
+
           <Text style={styles.ontext}>เรื่องย่อ:</Text>
           <Text style={styles.ontext}>{selectedMov.description}</Text>
           <View style={{ marginTop: 8 }}>
+
             <Text style={styles.ontext}>
               <Text style={{ color: "red" }}>Season: </Text>
               {selectedMov.season}
             </Text>
+
             <Text style={styles.ontext}>
               <Text style={{ color: "red" }}>Episode:</Text>{" "}
               {selectedMov.episode}
             </Text>
-            {/* <FlatList
-              data={selectedMov.comments}
-              renderItem={selectedMov.comments}
-              numColumns={1}
-            /> */}
+
+            <Text style={styles.ontext}>
+              <Text style={{ color: "red" }}>Number of Finished:</Text>{" "}
+              {selectedMov.numOfFinished}
+            </Text>
+
+            <Text style={styles.ontext}>
+              <Text style={{ color: "red" }}>Number of In-Progress:</Text>{" "}
+              {selectedMov.numOfInprogress}
+            </Text>
+ 
             <Text style={styles.ontext}>Comment:</Text>
             {selectedMov.comments.map((data) => {
+            
             return (
-              <Text key={data} style={styles.data}>- {data}</Text>
-            )
+              <Text key={data} style={styles.commentText}>- {data}</Text>
+            );
 
           })}
           </View>
@@ -66,9 +78,6 @@ MovieDetailScreen.navigationOptions = (navigationData) => {
 };
 
 const styles = StyleSheet.create({
-  data:{
-    color: "white",
-  },
   screen: {
     flex: 1,
     backgroundColor: "#111111",
@@ -98,7 +107,7 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 24,
     marginTop: 10,
-    textDecorationLine: "underline",
+    // textDecorationLine: "underline",
   },
   result: {
     color: "white",
@@ -112,6 +121,9 @@ const styles = StyleSheet.create({
   },
   ontext: {
     marginTop: 5,
+    color: "white",
+  },
+  commentText:{
     color: "white",
   },
 });
