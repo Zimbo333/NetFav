@@ -72,7 +72,7 @@ MovieDetailScreen.navigationOptions = (navigationData) => {
   const moviesId = navigationData.navigation.getParam("moviesId");
   const selectedMovie = MOVIES.find((mov) => mov.id === moviesId);
   return {
-    headerTintColor: "red",
+    headerTintColor: "white",
     headerTitle: selectedMovie.name,
   };
 };

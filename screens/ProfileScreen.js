@@ -17,7 +17,7 @@ const ProfileScreen = (props) => {
   const renderUpMovie = (itemData) => {
     return (
       <UpProItem
-      title={itemData.item.name + " (Season " + itemData.item.season + ")"}
+        title={itemData.item.name + " (Season " + itemData.item.season + ")"}
         image={itemData.item.coverImgUrl}
         onSelectMeal={() => {
           {
@@ -34,6 +34,7 @@ const ProfileScreen = (props) => {
       <View style={styles.box0}>
         <View style={styles.TextUserContainer}>
           <Text style={styles.innerBoxText}>Display Name</Text>
+          <Text style={styles.innerBoxText}>@username</Text>
         </View>
         <View style={styles.ButtonContainer}>
           <Button
@@ -113,6 +114,7 @@ const styles = StyleSheet.create({
   },
   innerBoxText: {
     color: "white",
+    fontSize: 20,
   },
   movieBox: {
     backgroundColor: "green",
@@ -123,7 +125,8 @@ const styles = StyleSheet.create({
   ButtonContainer: {
     flexDirection: "row",
     flex: 1,
-    justifyContent:"space-between"
+    justifyContent: "space-between",
+    alignSelf: "center",
   },
   button: {
     margin: 10,
