@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
@@ -13,6 +13,10 @@ import { color } from "react-native-reanimated";
 import MovieItem from "../components/MovieItem";
 import { MOVIES } from "../data/dummy-data";
 const SearchScreen = (props) => {
+  const [itemSearch,setitemSearch] = useState('')
+  
+   const data = MOVIES.filter((items)=> items.name.toLowerCase().includes(itemSearch.toLowerCase()))
+  
   const renderMovieItem = (itemData) => {
     return (
       <MovieItem
@@ -36,6 +40,10 @@ const SearchScreen = (props) => {
         style={styles.textinput}
         placeholder="Type movie name..."
         placeholderTextColor="#aaa"
+        onChangeText={ (text)=> {
+          setitemSearch(text)
+          console.log(itemSearch)
+        }}
       />
       <View style={styles.button}>
         <Button
@@ -72,7 +80,7 @@ const SearchScreen = (props) => {
             paddingLeft: 25,
           }}
           columnWrapperStyle={{ justifyContent: "space-between" }}
-          data={MOVIES}
+          data={data}
           renderItem={renderMovieItem}
           numColumns={2}
           style={styles.flatListContainer}
