@@ -12,7 +12,20 @@ import {
 import MovieItem from "../components/MovieItem";
 import UpProItem from "../components/UpProItem";
 import { MOVIES } from "../data/dummy-data";
+import firebase from 'firebase';
+
 const HomeScreen = (props) => {
+  const dbh =  firebase.firestore();
+  const movieCollection = dbh.collection('series').doc('riverdale').get().then(
+    function (doc){
+      if (!doc.exists) {
+        console.log('No such document!');
+      } else {
+        console.log('Document data:', doc.data());
+      }
+    }
+  )
+  
   const renderUpMovie = (itemData) => {
     return (
       <UpProItem
@@ -40,6 +53,7 @@ const HomeScreen = (props) => {
             props.navigation.navigate("MovieDetail", {
               moviesId: itemData.item.id,
             });
+            console.log('the movie collection is', movieCollection);
           }
         }}
       />

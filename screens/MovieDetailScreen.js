@@ -14,6 +14,7 @@ import {
 import { MOVIES } from "../data/dummy-data";
 import CommentItem from "../components/CommentItem";
 import { Picker } from "@react-native-picker/picker";
+import DropDownPicker from 'react-native-dropdown-picker';
 
 const MovieDetailScreen = (props) => {
   const moviId = props.navigation.getParam("moviesId");
@@ -21,11 +22,9 @@ const MovieDetailScreen = (props) => {
   const [selectedValue, setSelectedValue] = useState("1");
 
   var payments = [];
-  for (let i = 1; i <= selectedMov.episode; i++) {
-
+  for (let i = 1; i <= 3; i++) {
     payments.push(<Picker.Item label={i} value={i} />)
   }
-
   return (
     <ScrollView style={styles.scrollView}>
       <View style={styles.screen}>
@@ -47,6 +46,7 @@ const MovieDetailScreen = (props) => {
 
             <Text style={styles.ontext}>
               <Text style={{ color: "red" }}>Episode:</Text>{" "}
+              <ScrollView>
               <Picker
                 selectedValue={selectedValue}
                 style={{ height: 25, width: 45 }}
@@ -55,6 +55,7 @@ const MovieDetailScreen = (props) => {
                 }>
                 {payments}
               </Picker>
+              </ScrollView>
             </Text>
 
             <Text style={styles.ontext}>

@@ -4,6 +4,9 @@ import { StyleSheet, Text, View } from "react-native";
 
 import NetFavNavigator from "./navigator/NetFavNavigator";
 import firebase from "firebase";
+import {firebaseConfig} from "./firebaseConfig";
+
+firebase.initializeApp(firebaseConfig)
 
 class App extends React.Component {
   render() {

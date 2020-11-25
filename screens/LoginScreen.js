@@ -44,7 +44,7 @@ const LoginScreen = (props) => {
             props.navigation.navigate("Home");
           }}
         />
-        <Text style={{color:'white'}}>Or</Text>
+        <Text style={{color:'white', textAlign:'center', justifyContent:'center',padding:10}}>Or</Text>
         <Button
           title="Register"
           color="#c1071e"
@@ -67,6 +67,7 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: "#111111",
+    flexDirection:'column'
     // justifyContent: "center",
     // alignItems: "stretch",
   },
