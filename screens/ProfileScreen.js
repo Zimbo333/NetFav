@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -12,13 +12,48 @@ import {
 import { MOVIES } from "../data/dummy-data";
 import MovieItem from "../components/MovieItem";
 import UpProItem from "../components/UpProItem";
+import firebase from "firebase";
+import 'firebase/firestore';
+import { ActivityIndicator } from "react-native";
 
 const ProfileScreen = (props) => {
+  const dbh = firebase.firestore();
+  const [loading, setLoading] = useState(true); // Set loading to true on component mount
+  const [movies, setMovies] = useState([]); // Initial empty array of movies
+
+  useEffect(() => {
+    const subscriber = dbh
+      .collection("series")
+      .onSnapshot((querySnapshot) => {
+        const movies = [];
+
+        querySnapshot.forEach((documentSnapshot) => {
+          movies.push({
+            ...documentSnapshot.data(),
+            key: documentSnapshot.id,
+          });
+        });
+
+        setMovies(movies);
+        setLoading(false);
+      });
+
+    // Unsubscribe from events when no longer in use
+    return () => subscriber();
+  }, []);
+  if (loading) {
+    return <ActivityIndicator />;
+  }
+
   const renderUpMovie = (itemData) => {
     return (
       <UpProItem
-        title={itemData.item.name + " (Season " + itemData.item.season + ")"}
-        image={itemData.item.coverImgUrl}
+        title={
+          itemData.item.name
+          // + " (Season " + itemData.item.season + ")"
+        }
+        // image={itemData.item.coverImgUrl}
+        image={itemData.item.cover}
         onSelectMeal={() => {
           {
             props.navigation.navigate("MovieDetail", {
@@ -29,6 +64,7 @@ const ProfileScreen = (props) => {
       />
     );
   };
+
   return (
     <ScrollView style={styles.screen}>
       <View style={styles.box0}>
@@ -55,12 +91,12 @@ const ProfileScreen = (props) => {
       </View>
       <Text style={styles.headText}>Currenlty Watching</Text>
       <View style={styles.box1}>
-        <FlatList data={MOVIES} renderItem={renderUpMovie} numColumns={1} />
+        <FlatList data={movies} renderItem={renderUpMovie} numColumns={1} />
       </View>
       <Text style={styles.headText}>Finished</Text>
       <View style={styles.box1}>
         <FlatList
-          data={MOVIES.slice(1, 2)}
+          data={movies.slice(1, 2)}
           renderItem={renderUpMovie}
           numColumns={1}
         />

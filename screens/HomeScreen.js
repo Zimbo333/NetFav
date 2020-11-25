@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -12,25 +12,71 @@ import {
 import MovieItem from "../components/MovieItem";
 import UpProItem from "../components/UpProItem";
 import { MOVIES } from "../data/dummy-data";
-import firebase from 'firebase';
+import firebase from "firebase";
+import 'firebase/firestore';
+import { ActivityIndicator } from "react-native";
 
 const HomeScreen = (props) => {
-  const dbh =  firebase.firestore();
-  const movieCollection = dbh.collection('series').doc('riverdale').get().then(
-    function (doc){
-      if (!doc.exists) {
-        console.log('No such document!');
-      } else {
-        console.log('Document data:', doc.data());
-      }
-    }
-  )
+  const dbh = firebase.firestore();
+  const movieCollection = dbh
+    .collection("series")
+    // .doc("riverdale")
+    // .get()
+    // .then(function (doc) {
+    //   if (!doc.exists) {
+    //     console.log("No such document!");
+    //   } else {
+    //     console.log("Document data:", doc.data());
+    //     console.log("Document data:", dbh.collection("series").get());
+    //   }
+    // });
+    .get()
+    .then((querySnapshot) => {
+      console.log("Total movies: ", querySnapshot.size);
+
+      querySnapshot.forEach((documentSnapshot) => {
+        console.log("doc id: ", documentSnapshot.id);
+        console.log("Doc data: ", documentSnapshot.data());
+      });
+    });
+
+  const [loading, setLoading] = useState(true); // Set loading to true on component mount
+  const [movies, setMovies] = useState([]); // Initial empty array of movies
+
+  useEffect(() => {
+    const subscriber = dbh
+      .collection("series")
+      .onSnapshot((querySnapshot) => {
+        const movies = [];
+
+        querySnapshot.forEach((documentSnapshot) => {
+          movies.push({
+            ...documentSnapshot.data(),
+            key: documentSnapshot.id,
+          });
+        });
+
+        setMovies(movies);
+        setLoading(false);
+      });
+
+    // Unsubscribe from events when no longer in use
+    return () => subscriber();
+  }, []);
+  if (loading) {
+    return <ActivityIndicator />;
+  }
+
   
   const renderUpMovie = (itemData) => {
     return (
       <UpProItem
-        title={itemData.item.name + " (Season " + itemData.item.season + ")"}
-        image={itemData.item.coverImgUrl}
+        title={
+          itemData.item.name
+          // + " (Season " + itemData.item.season + ")"
+        }
+        // image={itemData.item.coverImgUrl}
+        image={itemData.item.cover}
         onSelectMeal={() => {
           {
             props.navigation.navigate("MovieDetail", {
@@ -46,14 +92,14 @@ const HomeScreen = (props) => {
     return (
       <MovieItem
         title={itemData.item.name}
-        season={"(Season " + itemData.item.season + ")"}
-        image={itemData.item.coverImgUrl}
+        // season={"(Season " + itemData.item.season + ")"}
+        image={itemData.item.cover}
         onSelectMeal={() => {
           {
             props.navigation.navigate("MovieDetail", {
               moviesId: itemData.item.id,
             });
-            console.log('the movie collection is', movieCollection);
+            console.log("the movie collection is", movieCollection);
           }
         }}
       />
@@ -66,7 +112,7 @@ const HomeScreen = (props) => {
       <Text style={styles.result}>Update your Progress</Text>
       <View style={styles.box1}>
         <FlatList
-          data={MOVIES.slice(0, 3)}
+          data={movies.slice(0, 3)}
           renderItem={renderUpMovie}
           numColumns={1}
         />
@@ -81,7 +127,7 @@ const HomeScreen = (props) => {
             paddingLeft: 25,
           }}
           columnWrapperStyle={{ justifyContent: "space-between" }}
-          data={MOVIES}
+          data={movies}
           renderItem={renderMovieItem}
           numColumns={2}
           style={styles.flatListContainer}
