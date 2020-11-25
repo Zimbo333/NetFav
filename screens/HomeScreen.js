@@ -67,7 +67,7 @@ const HomeScreen = (props) => {
     return <ActivityIndicator />;
   }
 
-  
+
   const renderUpMovie = (itemData) => {
     return (
       <UpProItem
@@ -83,6 +83,7 @@ const HomeScreen = (props) => {
               moviesId: itemData.item.id,
             });
           }
+          console.log(Object.keys(movies))
         }}
       />
     );

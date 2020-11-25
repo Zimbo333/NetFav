@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -14,39 +14,68 @@ import {
 import { MOVIES } from "../data/dummy-data";
 import CommentItem from "../components/CommentItem";
 import { Picker } from "@react-native-picker/picker";
-import DropDownPicker from 'react-native-dropdown-picker';
+import DropDownPicker from "react-native-dropdown-picker";
+import firebase from "firebase";
+import "firebase/firestore";
+import { ActivityIndicator } from "react-native";
 
 const MovieDetailScreen = (props) => {
-  const moviId = props.navigation.getParam("moviesId");
-  const selectedMov = MOVIES.find((movie) => movie.id === moviId);
+  const dbh = firebase.firestore();
   const [selectedValue, setSelectedValue] = useState("1");
 
-  var payments = [];
-  for (let i = 1; i <= 3; i++) {
-    payments.push(<Picker.Item label={i} value={i} />)
+  const [loading, setLoading] = useState(true); // Set loading to true on component mount
+  const [movies, setMovies] = useState([]); // Initial empty array of movies
+
+  useEffect(() => {
+    const subscriber = dbh.collection("series").onSnapshot((querySnapshot) => {
+      const movies = [];
+
+      querySnapshot.forEach((documentSnapshot) => {
+        movies.push({
+          ...documentSnapshot.data(),
+          key: documentSnapshot.id,
+        });
+      });
+
+      setMovies(movies);
+      setLoading(false);
+    });
+    // Unsubscribe from events when no longer in use
+    return () => subscriber();
+  }, []);
+  if (loading) {
+    return <ActivityIndicator />;
   }
+  const moviId = props.navigation.getParam("moviesId");
+  const selectedMov = movies.find((movie) => movie.id === moviId);
+
+  // var payments = [];
+  // for (let i = 1; i <= 3; i++) {
+  //   payments.push(<Picker.Item label={i} value={i} />)
+  // }
   return (
+    // <View>{console.log(selectedMov)}{console.log(moviId)}{console.log(Object.keys(movies))}</View>
     <ScrollView style={styles.scrollView}>
       <View style={styles.screen}>
         <View style={styles.box1}>
           <ImageBackground
-            source={{ uri: selectedMov.coverImgUrl }}
+            source={{ uri: selectedMov.cover }}
             style={styles.img}
           ></ImageBackground>
 
           <Text style={styles.headText}>{selectedMov.name}</Text>
 
           <Text style={styles.ontext}>เรื่องย่อ:</Text>
-          <Text style={styles.ontext}>{selectedMov.description}</Text>
+          <Text style={styles.ontext}>{selectedMov.desc}</Text>
           <View style={{ marginTop: 8 }}>
             <Text style={styles.ontext}>
               <Text style={{ color: "red" }}>Season: </Text>
-              {selectedMov.season}
+              {/* {selectedMov.season} */}
             </Text>
 
             <Text style={styles.ontext}>
               <Text style={{ color: "red" }}>Episode:</Text>{" "}
-              <ScrollView>
+              {/* <ScrollView>
               <Picker
                 selectedValue={selectedValue}
                 style={{ height: 25, width: 45 }}
@@ -55,17 +84,17 @@ const MovieDetailScreen = (props) => {
                 }>
                 {payments}
               </Picker>
-              </ScrollView>
+              </ScrollView> */}
             </Text>
 
             <Text style={styles.ontext}>
               <Text style={{ color: "red" }}>Number of Finished:</Text>{" "}
-              {selectedMov.numOfFinished}
+              {/* {selectedMov.numOfFinished} */}
             </Text>
 
             <Text style={styles.ontext}>
               <Text style={{ color: "red" }}>Number of In-Progress:</Text>{" "}
-              {selectedMov.numOfInprogress}
+              {/* {selectedMov.numOfInprogress} */}
             </Text>
 
             {/* {selectedMov.comments.map((data) => {
@@ -109,7 +138,7 @@ const MovieDetailScreen = (props) => {
             authorName={"Tinto"}
             episode={"9"}
             movieName={selectedMov.name}
-            season={selectedMov.season}
+            // season={selectedMov.season}
             time={"2020-05-25 11:32:33"}
             comment={"กระสุนวงจักรสุดยอด"}
             image={
@@ -127,7 +156,7 @@ const MovieDetailScreen = (props) => {
             authorName={"Thanawat"}
             episode={"9"}
             movieName={selectedMov.name}
-            season={selectedMov.season}
+            // season={selectedMov.season}
             time={"2020-05-25 11:50:43"}
             comment={"คาถาแยกเงาพันร่าง!!!!!"}
             image={
@@ -144,16 +173,17 @@ const MovieDetailScreen = (props) => {
         </View>
       </View>
     </ScrollView>
+  
   );
 };
 
 // กำหนด navigationOptions เช่่น การปรับแต่งเฮดเดอร์ที่นี่ได้
 MovieDetailScreen.navigationOptions = (navigationData) => {
-  const moviesId = navigationData.navigation.getParam("moviesId");
-  const selectedMovie = MOVIES.find((mov) => mov.id === moviesId);
+  // const moviesId = navigationData.navigation.getParam("moviesId");
+  // const selectedMovie = movies.find((mov) => mov.id === moviesId);
   return {
     headerTintColor: "white",
-    headerTitle: selectedMovie.name,
+    headerTitle: "tsest",
   };
 };
 
