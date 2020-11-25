@@ -11,36 +11,9 @@ import {
   Linking,
 } from "react-native";
 import Component from "react";
-<<<<<<< Updated upstream
 import { AntDesign } from '@expo/vector-icons';
-=======
-import auth from '@react-native-firebase/auth'
-
->>>>>>> Stashed changes
 
 const LoginScreen = (props) => {
-
-  // const signin = () => {
-  //   auth()
-  //     .createUserWithEmailAndPassword('jane.doe@example.com', 'SuperSecretPassword!')
-  //     .then(() => {
-  //       console.log('User account created & signed in!');
-  //     })
-  //     .catch(error => {
-  //       if (error.code === 'auth/email-already-in-use') {
-  //         console.log('That email address is already in use!');
-  //       }
-
-  //       if (error.code === 'auth/invalid-email') {
-  //         console.log('That email address is invalid!');
-  //       }
-
-  //       console.error(error);
-  //     });
-  // }
-
-
-
   return (
     <View style={styles.screen}>
       <View style={styles.container}>
@@ -70,28 +43,14 @@ const LoginScreen = (props) => {
           style={styles.button}
           onPress={() => {
             props.navigation.navigate("Home");
-            // signin();
-            // console.log()
           }}
         />
-<<<<<<< Updated upstream
         <Text style={{color:'white', textAlign: 'center', justifyContent: 'center', padding: 10}}>Or</Text> */}
         <Text style={{color:'red',textAlign:'center',justifyContent:'center',fontSize:55, marginTop:'20%'}}>NetFav</Text>
         <AntDesign name="google" size={30} color="white" style={{textAlign:'center',justifyContent:'center',marginTop:25}} />
         <View style={{width:'100%',height:50, backgroundColor:'#1877f2', textAlign:'center',borderRadius:10, marginTop:'10%'}}>
         <Text onPress={() => Linking.openURL("http://google.com")} style={{marginTop:15, color:'white', fontSize:18}}>Sign in with Google</Text>
         </View>
-=======
-        <Text style={{ color: 'white', textAlign: 'center', justifyContent: 'center', padding: 10 }}>Or</Text>
-        <Button
-          title="Register"
-          color="#c1071e"
-          style={styles.button}
-          onPress={() => {
-            props.navigation.navigate("Register");
-          }}
-        />
->>>>>>> Stashed changes
       </View>
     </View>
   );
@@ -106,10 +65,6 @@ const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: "#111111",
-<<<<<<< Updated upstream
-=======
-    flexDirection: 'column'
->>>>>>> Stashed changes
     // justifyContent: "center",
     // alignItems: "stretch",
   },

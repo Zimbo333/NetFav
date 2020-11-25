@@ -9,32 +9,10 @@ import {
   Platform,
   ScrollView
 } from "react-native";
+import MovieItem from "../components/MovieItem";
 import UpProItem from "../components/UpProItem";
 import { MOVIES } from "../data/dummy-data";
-<<<<<<< Updated upstream
 const HomeScreen = (props) => {
-=======
-import MovieItem from "../components/MovieItem";
-import firebase from 'firebase';
-import auth from '@react-native-firebase/auth';
-
-const HomeScreen = (props) => {
-  const user = firebase.auth().currentUser;
-  if(user){
-    console.log('User email: ', user.email);
-  }
-  const dbh = firebase.firestore();
-  const movieCollection = dbh.collection('series').doc('riverdale').get().then(
-    function (doc){
-      if (!doc.exists) {
-        console.log('No such document!');
-      } else {
-        console.log('Document data:', doc.data());
-      }
-    }
-  )
-  
->>>>>>> Stashed changes
   const renderUpMovie = (itemData) => {
     return (
       <UpProItem
