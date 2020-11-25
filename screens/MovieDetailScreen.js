@@ -19,6 +19,16 @@ import firebase from "firebase";
 import "firebase/firestore";
 import { ActivityIndicator } from "react-native";
 
+// const _CommentButton = (props) => {
+//   dbh = firebase
+//     .firestore()
+//     .collection("proprietary")
+//     .doc(docID)
+//     .set(
+//       { sharedWith: [{ who: "third@test.com", when: new Date() }] },
+//       { merge: true }
+//     );
+// };
 const MovieDetailScreen = (props) => {
   const dbh = firebase.firestore();
   const [selectedValue, setSelectedValue] = useState("1");
@@ -67,58 +77,38 @@ const MovieDetailScreen = (props) => {
 
           <Text style={styles.ontext}>เรื่องย่อ:</Text>
           <Text style={styles.ontext}>{selectedMov.desc}</Text>
-          <View style={{ marginTop: 8 }}>
+          {/* <View style={{ marginTop: 8 }}>
             <Text style={styles.ontext}>
               <Text style={{ color: "red" }}>Season: </Text>
-              {/* {selectedMov.season} */}
+              {selectedMov.season}
             </Text>
 
             <Text style={styles.ontext}>
               <Text style={{ color: "red" }}>Episode:</Text>{" "}
-              {/* <ScrollView>
-              <Picker
-                selectedValue={selectedValue}
-                style={{ height: 25, width: 45 }}
-                onValueChange={(itemValue, itemIndex) =>
-                  setSelectedValue(itemValue)
-                }>
-                {payments}
-              </Picker>
-              </ScrollView> */}
+              <ScrollView>
+                <Picker
+                  selectedValue={selectedValue}
+                  style={{ height: 25, width: 45 }}
+                  onValueChange={(itemValue, itemIndex) =>
+                    setSelectedValue(itemValue)
+                  }
+                >
+                  
+                </Picker>
+              </ScrollView>
             </Text>
 
             <Text style={styles.ontext}>
               <Text style={{ color: "red" }}>Number of Finished:</Text>{" "}
-              {/* {selectedMov.numOfFinished} */}
+              {selectedMov.numOfFinished}
             </Text>
 
             <Text style={styles.ontext}>
               <Text style={{ color: "red" }}>Number of In-Progress:</Text>{" "}
-              {/* {selectedMov.numOfInprogress} */}
+              {selectedMov.numOfInprogress}
             </Text>
+          </View> */}
 
-            {/* {selectedMov.comments.map((data) => {
-              return (
-                // <Text key={data} style={styles.commentText}>- {data}</Text>
-                <CommentItem
-                  title={
-                    itemData.item.name +
-                    " (Season " +
-                    itemData.item.season +
-                    ")"
-                  }
-                  image={itemData.item.coverImgUrl}
-                  onSelectMeal={() => {
-                    {
-                      props.navigation.navigate("MovieDetail", {
-                        moviesId: itemData.item.id,
-                      });
-                    }
-                  }}
-                />
-              );
-            })} */}
-          </View>
           <TextInput
             style={styles.textinput}
             placeholder="Comment ..."
@@ -129,12 +119,34 @@ const MovieDetailScreen = (props) => {
               title="Comment"
               color="red"
               onPress={() => {
-                // props.navigation.navigate("MovieDetail");
+                // this._CommentButton;
               }}
             />
           </View>
           <Text style={styles.ontext}>Comment:</Text>
-          <CommentItem
+          {console.log(selectedMov.checkin)}
+          {selectedMov.checkin.map((data) => {
+            return (
+              <CommentItem
+                authorName={data.username}
+                episode={data.ep}
+                season={data.ss}
+                movieName={selectedMov.name}
+                time={"2020-05-25 11:32:33"}
+                comment={data.comment}
+                image={data.imgUrl}
+                onSelectMeal={() => {
+                  {
+                    // props.navigation.navigate("MovieDetail", {
+                    //   moviesId: itemData.item.id,
+                    // });
+                  }
+                }}
+              />
+            );
+          })}
+
+          {/* <CommentItem
             authorName={"Tinto"}
             episode={"9"}
             movieName={selectedMov.name}
@@ -169,11 +181,10 @@ const MovieDetailScreen = (props) => {
                 // });
               }
             }}
-          />
+          /> */}
         </View>
       </View>
     </ScrollView>
-  
   );
 };
 
@@ -181,9 +192,10 @@ const MovieDetailScreen = (props) => {
 MovieDetailScreen.navigationOptions = (navigationData) => {
   // const moviesId = navigationData.navigation.getParam("moviesId");
   // const selectedMovie = movies.find((mov) => mov.id === moviesId);
+  const moviesName = navigationData.navigation.getParam("moviesName");
   return {
     headerTintColor: "white",
-    headerTitle: "tsest",
+    headerTitle: moviesName,
   };
 };
 

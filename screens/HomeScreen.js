@@ -81,6 +81,7 @@ const HomeScreen = (props) => {
           {
             props.navigation.navigate("MovieDetail", {
               moviesId: itemData.item.id,
+              moviesName: itemData.item.name
             });
           }
           console.log(Object.keys(movies))
@@ -99,6 +100,7 @@ const HomeScreen = (props) => {
           {
             props.navigation.navigate("MovieDetail", {
               moviesId: itemData.item.id,
+              moviesName: itemData.item.name
             });
             console.log("the movie collection is", movieCollection);
           }

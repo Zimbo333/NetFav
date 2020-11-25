@@ -13,7 +13,7 @@ import { MOVIES } from "../data/dummy-data";
 import MovieItem from "../components/MovieItem";
 import UpProItem from "../components/UpProItem";
 import firebase from "firebase";
-import 'firebase/firestore';
+import "firebase/firestore";
 import { ActivityIndicator } from "react-native";
 
 const ProfileScreen = (props) => {
@@ -22,21 +22,19 @@ const ProfileScreen = (props) => {
   const [movies, setMovies] = useState([]); // Initial empty array of movies
 
   useEffect(() => {
-    const subscriber = dbh
-      .collection("series")
-      .onSnapshot((querySnapshot) => {
-        const movies = [];
+    const subscriber = dbh.collection("series").onSnapshot((querySnapshot) => {
+      const movies = [];
 
-        querySnapshot.forEach((documentSnapshot) => {
-          movies.push({
-            ...documentSnapshot.data(),
-            key: documentSnapshot.id,
-          });
+      querySnapshot.forEach((documentSnapshot) => {
+        movies.push({
+          ...documentSnapshot.data(),
+          key: documentSnapshot.id,
         });
-
-        setMovies(movies);
-        setLoading(false);
       });
+
+      setMovies(movies);
+      setLoading(false);
+    });
 
     // Unsubscribe from events when no longer in use
     return () => subscriber();
@@ -70,7 +68,9 @@ const ProfileScreen = (props) => {
       <View style={styles.box0}>
         <View style={styles.TextUserContainer}>
           <Text style={styles.innerBoxText}>Display Name</Text>
-          <Text style={styles.innerBoxText}>@username</Text>
+          <Text style={(styles.innerBoxText, styles.innerBoxText1)}>
+            Thanawat SoCute lnwza007
+          </Text>
         </View>
         <View style={styles.ButtonContainer}>
           {/* <Button
@@ -171,6 +171,10 @@ const styles = StyleSheet.create({
   },
   TextUserContainer: {
     flex: 1.5,
+  },
+  innerBoxText1: {
+    color: "red",
+    fontSize: 20,
   },
 });
 

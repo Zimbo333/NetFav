@@ -17,7 +17,7 @@ const CommentItem = (props) => {
         <View style={styles.textContainer}>
           <Text style={styles.comment}>
             <Text style={styles.commentInnerText}>{props.authorName}</Text> has
-            watching EP.{props.episode}{" "}
+            watching EP.{props.episode}{" "} (Season {props.season} )
           </Text>
           <Text style={styles.comment}>
             <Text style={styles.commentInnerText2}>on {props.time}</Text>
