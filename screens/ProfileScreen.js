@@ -5,21 +5,19 @@ import {
   Button,
   FlatList,
   StyleSheet,
-  TouchableOpacity,
-  Platform,
   ScrollView,
+  ActivityIndicator,
 } from "react-native";
 import { MOVIES } from "../data/dummy-data";
-import MovieItem from "../components/MovieItem";
 import UpProItem from "../components/UpProItem";
+
 import firebase from "firebase";
 import "firebase/firestore";
-import { ActivityIndicator } from "react-native";
 
 const ProfileScreen = (props) => {
   const dbh = firebase.firestore();
-  const [loading, setLoading] = useState(true); // Set loading to true on component mount
-  const [movies, setMovies] = useState([]); // Initial empty array of movies
+  const [loading, setLoading] = useState(true);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     const subscriber = dbh.collection("series").onSnapshot((querySnapshot) => {
@@ -35,8 +33,6 @@ const ProfileScreen = (props) => {
       setMovies(movies);
       setLoading(false);
     });
-
-    // Unsubscribe from events when no longer in use
     return () => subscriber();
   }, []);
   if (loading) {
@@ -50,7 +46,6 @@ const ProfileScreen = (props) => {
           itemData.item.name
           // + " (Season " + itemData.item.season + ")"
         }
-        // image={itemData.item.coverImgUrl}
         image={itemData.item.cover}
         onSelectMeal={() => {
           {
@@ -73,12 +68,6 @@ const ProfileScreen = (props) => {
           </Text>
         </View>
         <View style={styles.ButtonContainer}>
-          {/* <Button
-            title="Follow"
-            color="#c1071e"
-            style={styles.button}
-            onPress={() => {}}
-          /> */}
           <Button
             title="Logout"
             color="#c1071e"
@@ -114,13 +103,10 @@ const styles = StyleSheet.create({
   scrollContainer: {
     alignSelf: "stretch",
     flex: 1,
-    // backgroundColor: "yellow",
   },
   screen: {
     flex: 1,
     backgroundColor: "#111111",
-    // justifyContent: "center",
-    // alignItems: "stretch",
   },
 
   box0: {
@@ -161,7 +147,6 @@ const styles = StyleSheet.create({
   ButtonContainer: {
     flexDirection: "row",
     flex: 1,
-    // justifyContent: "space-between",
     alignSelf: "center",
     justifyContent: "flex-end",
   },

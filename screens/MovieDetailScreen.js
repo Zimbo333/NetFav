@@ -3,51 +3,47 @@ import {
   View,
   Text,
   Button,
-  FlatList,
   StyleSheet,
-  TouchableOpacity,
-  Platform,
   ScrollView,
   ImageBackground,
   TextInput,
+  ActivityIndicator
 } from "react-native";
-import { MOVIES } from "../data/dummy-data";
+
 import CommentItem from "../components/CommentItem";
-import { Picker } from "@react-native-picker/picker";
-import DropDownPicker from "react-native-dropdown-picker";
+
+import { MOVIES } from "../data/dummy-data";
 import firebase from "firebase";
 import "firebase/firestore";
-import { ActivityIndicator } from "react-native";
+
 
 const MovieDetailScreen = (props) => {
   const dbh = firebase.firestore();
-  const [selectedValue, setSelectedValue] = useState("1");
+  const moviId = props.navigation.getParam("moviesId");
+  const selectedMov = movies.find((movie) => movie.id === moviId);
 
-  const [loading, setLoading] = useState(true); // Set loading to true on component mount
-  const [movies, setMovies] = useState([]); // Initial empty array of movies
-  const [comment, setComment] = useState('');
-  
+  const [loading, setLoading] = useState(true);
+  const [movies, setMovies] = useState([]);
+  const [comment, setComment] = useState("");
 
   const _CommentButton = () => {
     firebase
       .firestore()
       .collection("series")
       .doc(selectedMov.key)
-      .update(
-        {
-          checkin: firebase.firestore.FieldValue.arrayUnion({
-            comment: comment,
-            email: "tinto88@hotmail.com",
-            ep: "1",
-            imgUrl:
-              "https://assets.fxnetworks.com/cms/prod/2019/08/08/web_largecoverart_series_american-horror-story_540x796.jpg",
-            ss: "1",
-            username: "tinto",
-          }),
-        }
-      );
+      .update({
+        checkin: firebase.firestore.FieldValue.arrayUnion({
+          comment: comment,
+          email: "tinto88@hotmail.com",
+          ep: "1",
+          imgUrl:
+            "https://assets.fxnetworks.com/cms/prod/2019/08/08/web_largecoverart_series_american-horror-story_540x796.jpg",
+          ss: "1",
+          username: "tinto",
+        }),
+      });
     // alert("test");
-    setComment("")
+    setComment("");
   };
 
   useEffect(() => {
@@ -69,16 +65,9 @@ const MovieDetailScreen = (props) => {
   if (loading) {
     return <ActivityIndicator />;
   }
-  const moviId = props.navigation.getParam("moviesId");
-  const selectedMov = movies.find((movie) => movie.id === moviId);
 
-  // var payments = [];
-  // for (let i = 1; i <= 3; i++) {
-  //   payments.push(<Picker.Item label={i} value={i} />)
-  // }
   return (
-    <ScrollView style={styles.scrollView} >
-      {/* {console.log(selectedMov)} */}
+    <ScrollView style={styles.scrollView}>
       <View style={styles.screen}>
         <View style={styles.box1}>
           <ImageBackground
@@ -133,7 +122,6 @@ const MovieDetailScreen = (props) => {
             <Button title="Comment" color="red" onPress={_CommentButton} />
           </View>
           <Text style={styles.ontext}>Comment:</Text>
-          {/* {console.log(selectedMov.checkin)} */}
           {selectedMov.checkin.map((data) => {
             return (
               <CommentItem
@@ -154,8 +142,6 @@ const MovieDetailScreen = (props) => {
               />
             );
           })}
-
-          
         </View>
       </View>
     </ScrollView>
@@ -200,7 +186,6 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 24,
     marginTop: 10,
-    // textDecorationLine: "underline",
   },
   result: {
     color: "white",

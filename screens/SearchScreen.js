@@ -2,36 +2,23 @@ import React, { useEffect, useState } from "react";
 import {
   View,
   Text,
-  Button,
   FlatList,
   StyleSheet,
-  TouchableOpacity,
-  Platform,
+  ActivityIndicator,
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
 import MovieItem from "../components/MovieItem";
+
 import { MOVIES } from "../data/dummy-data";
 import firebase from "firebase";
 import "firebase/firestore";
-import { ActivityIndicator } from "react-native";
 
 const SearchScreen = (props) => {
   const [itemSearch, setitemSearch] = useState("");
   const dbh = firebase.firestore();
-  // const movieCollection = dbh
-  //   .collection("series")
-  //   .get()
-  //   .then((querySnapshot) => {
-  //     console.log("Total movies: ", querySnapshot.size);
 
-  //     querySnapshot.forEach((documentSnapshot) => {
-  //       console.log("doc id: ", documentSnapshot.id);
-  //       console.log("Doc data: ", documentSnapshot.data());
-  //     });
-  //   });
-
-  const [loading, setLoading] = useState(true); // Set loading to true on component mount
-  const [movies, setMovies] = useState([]); // Initial empty array of movies
+  const [loading, setLoading] = useState(true);
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
     const subscriber = dbh.collection("series").onSnapshot((querySnapshot) => {
@@ -144,7 +131,6 @@ const styles = StyleSheet.create({
     fontSize: 18,
   },
   textinput: {
-    // margin: 10,
     padding: 10,
     height: 40,
     backgroundColor: "white",

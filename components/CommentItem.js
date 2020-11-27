@@ -3,12 +3,8 @@ import {
   View,
   Text,
   StyleSheet,
-  TouchableOpacity,
-  ImageBackground,
   Image,
 } from "react-native";
-import { TextInput } from "react-native-gesture-handler";
-
 const CommentItem = (props) => {
   return (
     <View style={styles.commentContainer}>
@@ -57,7 +53,6 @@ const styles = StyleSheet.create({
     justifyContent: "flex-end",
   },
   commentContainer: {
-    // backgroundColor: "rgba(0,0,0,0.5)",
     backgroundColor: "#232323",
     paddingVertical: 5,
     paddingHorizontal: 12,
@@ -71,10 +66,8 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   commentContainer2: {
-    // backgroundColor: "red",
   },
   comment: {
-    // fontFamily: "open-sans-bold",
     fontSize: 12,
     color: "white",
     fontWeight: "bold",
@@ -89,7 +82,6 @@ const styles = StyleSheet.create({
     margin: 5,
   },
   textContainer: {
-    // backgroundColor: "blue",
     alignSelf: "center",
     justifyContent: "flex-start",
   },

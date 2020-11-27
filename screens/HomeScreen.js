@@ -2,61 +2,44 @@ import React, { useState, useEffect } from "react";
 import {
   View,
   Text,
-  Button,
   FlatList,
   StyleSheet,
-  TouchableOpacity,
-  Platform,
   ScrollView,
+  ActivityIndicator
 } from "react-native";
+
 import MovieItem from "../components/MovieItem";
 import UpProItem from "../components/UpProItem";
+
 import { MOVIES } from "../data/dummy-data";
 import firebase from "firebase";
-import 'firebase/firestore';
-import { ActivityIndicator } from "react-native";
+import "firebase/firestore";
 
 const HomeScreen = (props) => {
   const dbh = firebase.firestore();
-  const movieCollection = dbh
-    .collection("series")
-    .get()
-    .then((querySnapshot) => {
-      console.log("Total movies: ", querySnapshot.size);
 
-      querySnapshot.forEach((documentSnapshot) => {
-        console.log("doc id: ", documentSnapshot.id);
-        console.log("Doc data: ", documentSnapshot.data());
-      });
-    });
-
-  const [loading, setLoading] = useState(true); // Set loading to true on component mount
-  const [movies, setMovies] = useState([]); // Initial empty array of movies
+  const [loading, setLoading] = useState(true); 
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    const subscriber = dbh
-      .collection("series")
-      .onSnapshot((querySnapshot) => {
-        const movies = [];
+    const subscriber = dbh.collection("series").onSnapshot((querySnapshot) => {
+      const movies = [];
 
-        querySnapshot.forEach((documentSnapshot) => {
-          movies.push({
-            ...documentSnapshot.data(),
-            key: documentSnapshot.id,
-          });
+      querySnapshot.forEach((documentSnapshot) => {
+        movies.push({
+          ...documentSnapshot.data(),
+          key: documentSnapshot.id,
         });
-
-        setMovies(movies);
-        setLoading(false);
       });
 
-    // Unsubscribe from events when no longer in use
+      setMovies(movies);
+      setLoading(false);
+    });
     return () => subscriber();
   }, []);
   if (loading) {
     return <ActivityIndicator />;
   }
-
 
   const renderUpMovie = (itemData) => {
     return (
@@ -65,16 +48,15 @@ const HomeScreen = (props) => {
           itemData.item.name
           // + " (Season " + itemData.item.season + ")"
         }
-        // image={itemData.item.coverImgUrl}
         image={itemData.item.cover}
         onSelectMeal={() => {
           {
             props.navigation.navigate("MovieDetail", {
               moviesId: itemData.item.id,
-              moviesName: itemData.item.name
+              moviesName: itemData.item.name,
             });
           }
-          console.log(Object.keys(movies))
+          // console.log(Object.keys(movies))
         }}
       />
     );
@@ -90,9 +72,8 @@ const HomeScreen = (props) => {
           {
             props.navigation.navigate("MovieDetail", {
               moviesId: itemData.item.id,
-              moviesName: itemData.item.name
+              moviesName: itemData.item.name,
             });
-            console.log("the movie collection is", movieCollection);
           }
         }}
       />
@@ -100,7 +81,6 @@ const HomeScreen = (props) => {
   };
 
   return (
-    // <View style={styles.screen}>
     <ScrollView style={styles.scrollView}>
       <Text style={styles.result}>Update your Progress</Text>
       <View style={styles.box1}>
@@ -145,13 +125,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "stretch",
   },
-  // container: {
-  //   margin: 20,
-  //   padding: 10,
-  //   flex: 1,
-  //   backgroundColor: 'white',
-
-  // },
   box1: {
     margin: 10,
     paddingLeft: 10,
