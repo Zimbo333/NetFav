@@ -9,20 +9,60 @@ import {
   Platform,
 } from "react-native";
 import { TextInput } from "react-native-gesture-handler";
-import { color } from "react-native-reanimated";
 import MovieItem from "../components/MovieItem";
 import { MOVIES } from "../data/dummy-data";
+import firebase from "firebase";
+import "firebase/firestore";
+import { ActivityIndicator } from "react-native";
+
 const SearchScreen = (props) => {
-  const [itemSearch,setitemSearch] = useState('')
-  
-   const data = MOVIES.filter((items)=> items.name.toLowerCase().includes(itemSearch.toLowerCase()))
-  
+  const [itemSearch, setitemSearch] = useState("");
+  const dbh = firebase.firestore();
+  // const movieCollection = dbh
+  //   .collection("series")
+  //   .get()
+  //   .then((querySnapshot) => {
+  //     console.log("Total movies: ", querySnapshot.size);
+
+  //     querySnapshot.forEach((documentSnapshot) => {
+  //       console.log("doc id: ", documentSnapshot.id);
+  //       console.log("Doc data: ", documentSnapshot.data());
+  //     });
+  //   });
+
+  const [loading, setLoading] = useState(true); // Set loading to true on component mount
+  const [movies, setMovies] = useState([]); // Initial empty array of movies
+
+  useEffect(() => {
+    const subscriber = dbh.collection("series").onSnapshot((querySnapshot) => {
+      const movies = [];
+
+      querySnapshot.forEach((documentSnapshot) => {
+        movies.push({
+          ...documentSnapshot.data(),
+          key: documentSnapshot.id,
+        });
+      });
+
+      setMovies(movies);
+      setLoading(false);
+    });
+
+    return () => subscriber();
+  }, []);
+  if (loading) {
+    return <ActivityIndicator />;
+  }
+  const data = movies.filter((items) =>
+    items.name.toLowerCase().includes(itemSearch.toLowerCase())
+  );
+
   const renderMovieItem = (itemData) => {
     return (
       <MovieItem
         title={itemData.item.name}
-        season={"(Season " + itemData.item.season + ")"}
-        image={itemData.item.coverImgUrl}
+        // season={"(Season " + itemData.item.season + ")"}
+        image={itemData.item.cover}
         onSelectMeal={() => {
           {
             props.navigation.navigate("MovieDetail", {
@@ -35,43 +75,26 @@ const SearchScreen = (props) => {
   };
   return (
     <View style={styles.screen}>
-      {/* <View style={styles.container}> */}
       <TextInput
         style={styles.textinput}
         placeholder="Type movie name..."
         placeholderTextColor="#aaa"
-        onChangeText={ (text)=> {
-          setitemSearch(text)
-          console.log(itemSearch)
+        onChangeText={(text) => {
+          setitemSearch(text);
+          console.log(itemSearch);
         }}
       />
-      <View style={styles.button}>
+      {/* <View style={styles.button}>
         <Button
           title="Search"
           color="red"
           onPress={() => {
-            props.navigation.navigate("MovieDetail");
+            // props.navigation.navigate("MovieDetail");
           }}
         />
-      </View>
+      </View> */}
       <Text style={styles.result}>Result:</Text>
       <View style={styles.box1}>
-        {/* <Text style={styles.headText}>Currenlty Watching</Text>
-        </View>
-        <View style={styles.box1}>
-          <Text style={styles.headText}>Finished</Text> */}
-        {/* <Text style={styles.headText}>
-          Not Found?{" "}
-          <Text
-            style={{ color: "red" }}
-            onPress={() => {
-              props.navigation.navigate("Add");
-            }}
-          >
-            Request One.
-          </Text>
-        </Text> */}
-
         <FlatList
           contentContainerStyle={{
             flexDirection: "row",
@@ -86,15 +109,10 @@ const SearchScreen = (props) => {
           style={styles.flatListContainer}
         />
       </View>
-      {/* <View style={styles.box2}>
-          <Text style={styles.headText}>Trending Now</Text>
-        </View> */}
-      {/* </View> */}
     </View>
   );
 };
 
-// กำหนด navigationOptions เช่่น การปรับแต่งเฮดเดอร์ที่นี่ได้
 SearchScreen.navigationOptions = {
   headerTitle: "NetFav",
   headerLeft: null,
@@ -107,13 +125,6 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "stretch",
   },
-  // container: {
-  //   margin: 20,
-  //   padding: 10,
-  //   flex: 1,
-  //   backgroundColor: 'white',
-
-  // },
   box1: {
     margin: 10,
     padding: 10,

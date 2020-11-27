@@ -20,16 +20,6 @@ const HomeScreen = (props) => {
   const dbh = firebase.firestore();
   const movieCollection = dbh
     .collection("series")
-    // .doc("riverdale")
-    // .get()
-    // .then(function (doc) {
-    //   if (!doc.exists) {
-    //     console.log("No such document!");
-    //   } else {
-    //     console.log("Document data:", doc.data());
-    //     console.log("Document data:", dbh.collection("series").get());
-    //   }
-    // });
     .get()
     .then((querySnapshot) => {
       console.log("Total movies: ", querySnapshot.size);

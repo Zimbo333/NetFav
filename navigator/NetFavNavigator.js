@@ -1,11 +1,9 @@
-// import คอมโพเนนต์ที่จำเป็น
 import React from "react";
 import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 
 import { Ionicons } from "@expo/vector-icons";
-import { AntDesign } from "@expo/vector-icons";
 import { Entypo } from "@expo/vector-icons";
 import { FontAwesome } from "@expo/vector-icons";
 
@@ -24,7 +22,6 @@ const ProfileNavigator = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      // title: "NetFav",
       headerStyle: {
         backgroundColor: "black",
         elevation: 0,
@@ -48,7 +45,6 @@ const SearchNavigator = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      // title: "NetFav",
       headerStyle: {
         backgroundColor: "black",
         elevation: 0,
@@ -71,7 +67,6 @@ const MovieNavigator = createStackNavigator(
   },
   {
     defaultNavigationOptions: {
-      // title: "NetFav",
       headerStyle: {
         backgroundColor: "black",
         elevation: 0,

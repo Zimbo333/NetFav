@@ -3,15 +3,10 @@ import {
   View,
   Text,
   Button,
-  FlatList,
   StyleSheet,
-  TouchableOpacity,
-  Platform,
   TextInput,
   Linking,
 } from "react-native";
-import Component from "react";
-
 const LoginScreen = (props) => {
   return (
     <View style={styles.screen}>
@@ -44,7 +39,16 @@ const LoginScreen = (props) => {
             props.navigation.navigate("Home");
           }}
         />
-        <Text style={{color:'white', textAlign:'center', justifyContent:'center',padding:10}}>Or</Text>
+        <Text
+          style={{
+            color: "white",
+            textAlign: "center",
+            justifyContent: "center",
+            padding: 10,
+          }}
+        >
+          Or
+        </Text>
         <Button
           title="Register"
           color="#c1071e"
@@ -60,42 +64,35 @@ const LoginScreen = (props) => {
 
 LoginScreen.navigationOptions = {
   headerTitle: "NetFav",
-  headerShown: true
+  headerShown: true,
 };
 
 const styles = StyleSheet.create({
   screen: {
     flex: 1,
     backgroundColor: "#111111",
-    flexDirection:'column'
-    // justifyContent: "center",
-    // alignItems: "stretch",
+    flexDirection: "column",
   },
   container: {
     padding: 10,
     alignItems: "stretch",
     flex: 1,
-    // backgroundColor: 'blue',
     margin: 10,
     justifyContent: "flex-start",
   },
   textinput: {
-    // margin: 10,
     padding: 10,
     height: 40,
     borderColor: "#fff1",
     borderWidth: 1,
     backgroundColor: "#232323",
     color: "#dedede",
-    // marginLeft: "auto",
-    // marginRight: "auto",
     width: "100%",
     marginBottom: 10,
   },
   headerText: {
     color: "#dedede",
     fontSize: 38,
-    // fontWeight: "bold",
     marginBottom: 10,
   },
   headerText2: {
@@ -105,7 +102,6 @@ const styles = StyleSheet.create({
   },
   fgpassword: {
     marginBottom: 10,
-    // marginHorizontal: 10,
     color: "#dedede",
     textDecorationLine: "underline",
     marginRight: "auto",

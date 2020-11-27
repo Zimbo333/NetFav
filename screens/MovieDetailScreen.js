@@ -19,22 +19,36 @@ import firebase from "firebase";
 import "firebase/firestore";
 import { ActivityIndicator } from "react-native";
 
-// const _CommentButton = (props) => {
-//   dbh = firebase
-//     .firestore()
-//     .collection("proprietary")
-//     .doc(docID)
-//     .set(
-//       { sharedWith: [{ who: "third@test.com", when: new Date() }] },
-//       { merge: true }
-//     );
-// };
 const MovieDetailScreen = (props) => {
   const dbh = firebase.firestore();
   const [selectedValue, setSelectedValue] = useState("1");
 
   const [loading, setLoading] = useState(true); // Set loading to true on component mount
   const [movies, setMovies] = useState([]); // Initial empty array of movies
+  const [comment, setComment] = useState('');
+  
+
+  const _CommentButton = () => {
+    firebase
+      .firestore()
+      .collection("series")
+      .doc(selectedMov.key)
+      .update(
+        {
+          checkin: firebase.firestore.FieldValue.arrayUnion({
+            comment: comment,
+            email: "tinto88@hotmail.com",
+            ep: "1",
+            imgUrl:
+              "https://assets.fxnetworks.com/cms/prod/2019/08/08/web_largecoverart_series_american-horror-story_540x796.jpg",
+            ss: "1",
+            username: "tinto",
+          }),
+        }
+      );
+    // alert("test");
+    setComment("")
+  };
 
   useEffect(() => {
     const subscriber = dbh.collection("series").onSnapshot((querySnapshot) => {
@@ -50,7 +64,6 @@ const MovieDetailScreen = (props) => {
       setMovies(movies);
       setLoading(false);
     });
-    // Unsubscribe from events when no longer in use
     return () => subscriber();
   }, []);
   if (loading) {
@@ -64,8 +77,8 @@ const MovieDetailScreen = (props) => {
   //   payments.push(<Picker.Item label={i} value={i} />)
   // }
   return (
-    // <View>{console.log(selectedMov)}{console.log(moviId)}{console.log(Object.keys(movies))}</View>
-    <ScrollView style={styles.scrollView}>
+    <ScrollView style={styles.scrollView} >
+      {/* {console.log(selectedMov)} */}
       <View style={styles.screen}>
         <View style={styles.box1}>
           <ImageBackground
@@ -113,18 +126,14 @@ const MovieDetailScreen = (props) => {
             style={styles.textinput}
             placeholder="Comment ..."
             placeholderTextColor="#aaa"
+            onChangeText={(text) => setComment(text)}
+            value={comment}
           />
           <View style={styles.button}>
-            <Button
-              title="Comment"
-              color="red"
-              onPress={() => {
-                // this._CommentButton;
-              }}
-            />
+            <Button title="Comment" color="red" onPress={_CommentButton} />
           </View>
           <Text style={styles.ontext}>Comment:</Text>
-          {console.log(selectedMov.checkin)}
+          {/* {console.log(selectedMov.checkin)} */}
           {selectedMov.checkin.map((data) => {
             return (
               <CommentItem
@@ -146,52 +155,14 @@ const MovieDetailScreen = (props) => {
             );
           })}
 
-          {/* <CommentItem
-            authorName={"Tinto"}
-            episode={"9"}
-            movieName={selectedMov.name}
-            // season={selectedMov.season}
-            time={"2020-05-25 11:32:33"}
-            comment={"กระสุนวงจักรสุดยอด"}
-            image={
-              "https://scontent.fbkk5-8.fna.fbcdn.net/v/t1.0-9/61900010_2257196431030497_3782796938487791616_o.jpg?_nc_cat=106&ccb=2&_nc_sid=09cbfe&_nc_eui2=AeHwH9KpfjdVsHQsZVGDUdeLoXpPU11cvVWhek9TXVy9VcDsxibpOdi0-VeMSMwueEYkl4olX17_lrstjWrtorgW&_nc_ohc=gTp2-76qgwoAX8ijVHM&_nc_ht=scontent.fbkk5-8.fna&oh=284bd29d38c52ccc9c9dec17db7273b6&oe=5FE15EC8"
-            }
-            onSelectMeal={() => {
-              {
-                // props.navigation.navigate("MovieDetail", {
-                //   moviesId: itemData.item.id,
-                // });
-              }
-            }}
-          />
-          <CommentItem
-            authorName={"Thanawat"}
-            episode={"9"}
-            movieName={selectedMov.name}
-            // season={selectedMov.season}
-            time={"2020-05-25 11:50:43"}
-            comment={"คาถาแยกเงาพันร่าง!!!!!"}
-            image={
-              "https://scontent.fbkk5-6.fna.fbcdn.net/v/t1.0-9/16730167_1375883262432703_5084113495274887261_n.jpg?_nc_cat=101&ccb=2&_nc_sid=174925&_nc_eui2=AeEgjd3WQ4RWgZFdKs6R5DE0TREK90zxwZdNEQr3TPHBl4uHq7kf-_Bz7uOs4dPXivP4YOvSMO0QaLUqGs0YkfrR&_nc_ohc=BmieNGze5RIAX8GxpXC&_nc_ht=scontent.fbkk5-6.fna&oh=c34a83a321360f1c8c19fa37d049e9f3&oe=5FE1B4CB"
-            }
-            onSelectMeal={() => {
-              {
-                // props.navigation.navigate("MovieDetail", {
-                //   moviesId: itemData.item.id,
-                // });
-              }
-            }}
-          /> */}
+          
         </View>
       </View>
     </ScrollView>
   );
 };
 
-// กำหนด navigationOptions เช่่น การปรับแต่งเฮดเดอร์ที่นี่ได้
 MovieDetailScreen.navigationOptions = (navigationData) => {
-  // const moviesId = navigationData.navigation.getParam("moviesId");
-  // const selectedMovie = movies.find((mov) => mov.id === moviesId);
   const moviesName = navigationData.navigation.getParam("moviesName");
   return {
     headerTintColor: "white",
