@@ -8,7 +8,7 @@ import {
   ScrollView,
   ActivityIndicator,
 } from "react-native";
-import { MOVIES } from "../data/dummy-data";
+// import { MOVIES } from "../data/dummy-data";
 import UpProItem from "../components/UpProItem";
 
 import firebase from "firebase";

@@ -7,7 +7,7 @@ import {
   ScrollView,
   ImageBackground,
   TextInput,
-  ActivityIndicator
+  ActivityIndicator,
 } from "react-native";
 
 import CommentItem from "../components/CommentItem";
@@ -16,11 +16,8 @@ import { MOVIES } from "../data/dummy-data";
 import firebase from "firebase";
 import "firebase/firestore";
 
-
 const MovieDetailScreen = (props) => {
   const dbh = firebase.firestore();
-  const moviId = props.navigation.getParam("moviesId");
-  const selectedMov = movies.find((movie) => movie.id === moviId);
 
   const [loading, setLoading] = useState(true);
   const [movies, setMovies] = useState([]);
@@ -65,6 +62,9 @@ const MovieDetailScreen = (props) => {
   if (loading) {
     return <ActivityIndicator />;
   }
+  
+  const moviId = props.navigation.getParam("moviesId");
+  const selectedMov = movies.find((movie) => movie.id === moviId);
 
   return (
     <ScrollView style={styles.scrollView}>
