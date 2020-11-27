@@ -54,6 +54,7 @@ const SearchScreen = (props) => {
           {
             props.navigation.navigate("MovieDetail", {
               moviesId: itemData.item.id,
+              moviesName: itemData.item.name,
             });
           }
         }}
